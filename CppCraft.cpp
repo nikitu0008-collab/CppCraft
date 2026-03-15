@@ -1,11 +1,11 @@
 /*
-Read file READ ME to learn about the project.
+Read file READ_ME to learn about the project.
 */
-
 #include <iostream> //*Ввод/Вывод
 #include <string> //*Работа со строками
 #include <vector> //*Вектор для хранения
 #include <cstdlib> //*Для system(...)
+#include <cstdio> //* remove()
 #include <sstream> //*Разбиение строк на числа
 #include <fstream> //*Запись/Чтение
 #include <algorithm> //*Для поиска чего-либо в векторе(в моем случае для поиска библиотек)
@@ -17,19 +17,20 @@ struct Variable {
     std::string value;
 };
 int main() {
-    std::string command, type_vector, name_vector, variable_var, func_code, answer_cycles, numbering, name_variable;
+    std::string write_file, ssbufer, struct_anything_string, class_struct, fstream_file, listing_file_name;
+    std::string anything_class, stream_ofstream, listing_ifstream, anything_struct, stream, fstream, ifstream, ofstream, name_class, name_struct, command, type_vector, name_vector, variable_var, func_code, answer_cycles, numbering, name_variable;
     std::string variable_string, libName, input, name_file, answer, search = "#include <vector>", ret_type, name, params;
     
-    int size_vector = 0, answer_bool = 0, col_dynamic_arr = 0, col_dimensional_arr = 0, size_arr_d_1 = 0, size_arr_d_2 = 0, col_arr = 0, size_arr = 0, col_if = -1, col_else_if = -1; 
-    int col_variable = 0, col_case = -1, col_switch = -1, choice = 0, variable_int = 0, type_variable = 0, answer_Cpp_Craft_Project = -2, num = 0, size_dynamic_arr = 0;
+    int public_or_private = 0, size_vector = 0, answer_bool = 0, col_dynamic_arr = 0, col_dimensional_arr = 0, size_arr_d_1 = 0, size_arr_d_2 = 0, col_arr = 0, size_arr = 0, col_if = -1, col_else_if = -1; 
+    int answer_fstream = 0, answer_OOP = -1, col_variable = 0, col_case = -1, col_switch = -1, choice = 0, variable_int = 0, type_variable = 0, answer_Cpp_Craft_Project = -2, num = 0, size_dynamic_arr = 0;
     
     double variable_double = 0;
     float variable_float = 0;
     
     std::stringstream ss_cycles, ss_lib;
 
-    std::vector<std::string> cycles_for, cycles_while, cycles_do_while, vector_library, vector_switch, vector_case, vector_default, vector_if, vector_else_if;
-    std::vector<std::string> vector_arr, vector_dimensional_arr, vector_dynamic_arr, delete_dynamic_arr, vector_function, vector_vectorov, vector_variable, vector_cycles;
+    std::vector<std::string> vector_ofstream, vector_ifstream, cycles_for, cycles_while, cycles_do_while, vector_library, vector_switch, vector_case, vector_default, vector_if, vector_else_if;
+    std::vector<std::string> vector_fstream, vector_class, vector_struct, vector_arr, vector_dimensional_arr, vector_dynamic_arr, delete_dynamic_arr, vector_function, vector_vectorov, vector_variable, vector_cycles;
     
     std::vector<std::string> library = { "<algorithm>","<array>", "<atomic>","<barrier>","<bitset>","<bit>","<chrono>","<complex>","<concepts>","<condition_variable>","<coroutine>","<deque>","<exception>","<execution>","<forward_list>","<format>","<fstream>","<functional>","<future>","<initializer_list>","<iomanip>","<ios>","<iosfwd>","<iostream>","<istream>","<iterator>","<latch>","<limits>","<list>","<locale>","<map>","<memory>","<memory_resource>","<mutex>","<new>","<numeric>","<optional>","<ostream>","<queue>","<random>","<ranges>","<ratio>","<regex>","<scoped_allocator>","<set>","<shared_mutex>","<sstream>","<stack>","<stdexcept>","<streambuf>","<stop_token>","<string>","<string_view>","<system_error>","<thread>","<tuple>","<type_traits>","<typeindex>","<typeinfo>","<unordered_map>","<unordered_set>","<utility>","<valarray>","<variant>","<vector>","<version>","<charconv>","<compare>","<cassert>","<cctype>","<cerrno>","<cfenv>","<cfloat>","<cinttypes>","<ciso646>","<climits>","<clocale>","<cmath>","<cstdbool>","<cstddef>","<cstdint>","<cstdio>","<cstdlib>","<cstring>","<ctgmath>","<cuchar>","<cwchar>","<cwctype>","<ccomplex>" };
     
@@ -40,46 +41,73 @@ int main() {
     
     std::cout << "name file(don't write .cpp)\n:_>";
     std::getline(std::cin, name_file);
-    std::ofstream out(name_file + ".cpp"); // creating and open file from writing 
-    if (!out.is_open()) {
+    std::ofstream out(name_file + ".cpp"); // creating and open file from writing. 
+    if (!out.is_open()) { // checking file opening or not.
         std::cerr << "file not opening or creating" << std::endl;
         return EXIT_FAILURE;
     }
     while (answer_Cpp_Craft_Project != 0 && answer_Cpp_Craft_Project != -1) {
-        std::cout << "================================" << std::endl;
-        std::cout << "| Cpp Craft Code By N.Y.RPO3   |" << std::endl;
-        std::cout << "| 1.libraries   10.function    |" << std::endl;
-        std::cout << "| 2.variables   11.vector      |" << std::endl;
-        std::cout << "| 3.cycles                     |" << std::endl;
-        std::cout << "| 4.switch_case                |" << std::endl;
-        std::cout << "| 5.if                         |" << std::endl;
-        std::cout << "| 6.else if                    |" << std::endl;
-        std::cout << "| 7.arr[]                      |" << std::endl;
-        std::cout << "| 8.arr[][]   -1.save and exit |" << std::endl;
-        std::cout << "| 9.d_arr      0.save and start|" << std::endl;
-        std::cout << "|==============================|" << std::endl;
-        std::cout << "            answer: ";
+        std::cout << "  }--------------------------------{  " << std::endl;
+        std::cout << "}-----Cpp Craft Code By N.Y.RPO3-----{" << std::endl;
+        std::cout << "  }--------------------------------{  " << std::endl;
+        std::cout << "____________________________________" << std::endl;
+        std::cout << "| [1]-libraries   [10]-function    |" << std::endl;
+        std::cout << "| [2]-variables   [11]-vector      |" << std::endl;
+        std::cout << "| [3]-cycles      [12]-fstream     |" << std::endl;
+        std::cout << "| [4]-switch_case [13]-OOP         |" << std::endl;
+        std::cout << "| [5]-if                           |" << std::endl;
+        std::cout << "| [6]-else if   [-3]-exit no create|" << std::endl;
+        std::cout << "| [7]-arr[]     [-2]-check result  |" << std::endl;
+        std::cout << "| [8]-arr[][]   [-1]-save and exit |" << std::endl;
+        std::cout << "| [9]-d_arr     [ 0]-save and start|" << std::endl;
+        std::cout << "|-----------------------------------|" << std::endl;
+        std::cout << "|" << std::endl;
+        std::cout << "L------------->answer: ";
 
         std::cin >> answer_Cpp_Craft_Project;
         std::cin.ignore(1024, '\n');
-        system("cls");
+        system("clear");
         switch (answer_Cpp_Craft_Project) {
             case 1: {//Creatig library
-                vector_library.clear();
                 has_iostream = false;
                 has_string = false;
 
-                std::cout << "|1.  <algorithm>      |2.  <array>         |3.  <atomic>         |4.  <barrier>        |5.  <bitset>        |6.  <bit>           |7.  <chrono>        |8.  <complex>       |9.  <concepts>      |10. <condition_variable>|" << std::endl;
-                std::cout << "|11. <coroutine>      |12. <deque>         |13. <exception>      |14. <execution>      |15. <forward_list>  |16. <format>        |17. <fstream>       |18. <functional>    |19. <future>        |20. <initializer_list>  |" << std::endl;
-                std::cout << "|21. <iomanip>        |22. <ios>           |23. <iosfwd>         |24. <iostream>       |25. <istream>       |26. <iterator>      |27. <latch>         |28. <limits>        |29. <list>          |30. <locale>            |" << std::endl;
-                std::cout << "|31. <map>            |32. <memory>        |33. <memory_resource>|34. <mutex>          |35. <new>           |36. <numeric>       |37. <optional>      |38. <ostream>       |39. <queue>         |40. <random>            |" << std::endl;
-                std::cout << "|41. <ranges>         |42. <ratio>         |43. <regex>          |44. <scoped_allocator>|45. <set>          |46. <shared_mutex>  |47. <sstream>       |48. <stack>         |49. <stdexcept>     |50. <streambuf>         |" << std::endl;
-                std::cout << "|51. <stop_token>     |52. <string>        |53. <string_view>    |54. <system_error>   |55. <thread>        |56. <tuple>         |57. <type_traits>   |58. <typeindex>     |59. <typeinfo>      |60. <unordered_map>     |" << std::endl;
-                std::cout << "|61. <unordered_set>  |62. <utility>       |63. <valarray>       |64. <variant>        |65. <vector>        |66. <version>       |67. <charconv>      |68. <compare>       |69. <cassert>       |70. <cctype>            |" << std::endl;
-                std::cout << "|71. <cerrno>         |72. <cfenv>         |73. <cfloat>         |74. <cinttypes>      |75. <ciso646>       |76. <climits>       |77. <clocale>       |78. <cmath>         |79. <cstdbool>      |80. <cstddef>           |" << std::endl;
-                std::cout << "|81. <cstdint>        |82. <cstdio>        |83. <cstdlib>        |84. <cstring>        |85. <ctgmath>       |86. <cuchar>        |87. <cwchar>        |88. <cwctype>       |89. <ccomplex>      |" << std::endl;
-                std::cout << "|===== ADD LIBRARIES =|====|" << std::endl;
-
+                std::cout << "|===================== STANDARD TEMPLATE LIBRARY (STL) HEADERS ====================|\n";
+                std::cout << "|-------------------- Containers & Data Structures --------------------------------|\n";
+                std::cout << "|2. <array> |12. <deque> |15. <forward_list> |29. <list> |31. <map>                |\n";
+                std::cout << "|45. <set> |52. <string> |60. <unordered_map> |61. <unordered_set> |65. <vector>   |\n";
+                
+                std::cout << "|-------------------- Algorithms & Numerics ---------------------------------------|\n";
+                std::cout << "|1. <algorithm> |36. <numeric> |41. <ranges> |42. <ratio> |63. <valarray>          |\n";
+                
+                std::cout << "|-------------------- Utilities & Metaprogramming ---------------------------------|\n";
+                std::cout << "|5. <bitset> |6. <bit> |16. <format> |20. <initializer_list> |26. <iterator>       |\n";
+                std::cout << "|37. <optional> |53. <string_view> |56. <tuple> |57. <type_traits> |58. <typeindex>|\n";
+                std::cout << "|59. <typeinfo> |62. <utility> |64. <variant> |66. <version> |\n";
+                
+                std::cout << "|-------------------- Concurrency & Threading -------------------------------------|\n";
+                std::cout << "|3. <atomic> |4. <barrier> |11. <coroutine> |19. <future> |27. <latch>             |\n";
+                std::cout << "|34. <mutex> |46. <shared_mutex> |51. <stop_token> |55. <thread>                   |\n";
+                
+                std::cout << "|-------------------- Input/Output & Formatting -----------------------------------|\n";
+                std::cout << "|17. <fstream> |21. <iomanip> |22. <ios> |23. <iosfwd> |24. <iostream>             |\n";
+                std::cout << "|25. <istream> |38. <ostream> |47. <sstream> |50. <streambuf>                      |\n";
+                
+                std::cout << "|-------------------- Memory Management -------------------------------------------|\n";
+                std::cout << "|32. <memory> |33. <memory_resource> |35. <new> |44. <scoped_allocator>            |\n";
+                
+                std::cout << "|-------------------- Error Handling & Diagnostics --------------------------------|\n";
+                std::cout << "|13. <exception> |14. <execution> |18. <functional> |39. <queue>                   |\n";
+                std::cout << "|48. <stack> |49. <stdexcept> |54. <system_error> |68. <compare>                   |\n";
+                
+                std::cout << "|-------------------- C Standard Library Headers ----------------------------------|\n";
+                std::cout << "|69. <cassert> |70. <cctype> |71. <cerrno> |72. <cfenv> |73. <cfloat>              |\n";
+                std::cout << "|74. <cinttypes> |75. <ciso646> |76. <climits> |77. <clocale> |78. <cmath>         |\n";
+                std::cout << "|79. <cstdbool> |80. <cstddef> |81. <cstdint> |82. <cstdio> |83. <cstdlib>         |\n";
+                std::cout << "|84. <cstring> |85. <ctgmath> |86. <cuchar> |87. <cwchar> |88. <cwctype>           |\n";
+                std::cout << "|89. <ccomplex> |\n";
+                
+                std::cout << "|=========================== ADD LIBRARIES ========================================|\n";
                 std::cout << "Enter library numbers or name <name> (1-89):\n _>";
                 std::getline(std::cin, input);
     
@@ -108,7 +136,7 @@ int main() {
                 if (!has_string) {
                     vector_library.push_back("#include <string>");
                 }
-                system("cls");
+                system("clear");
                 break;
             }
             case 2://Creating variables
@@ -122,20 +150,23 @@ int main() {
                 }
 
                 for (int i = 0; i < col_variable; i++) {
-                    std::cout << "type: 1.int 2.double 3.float 4.string 5.bool 6.auto \n(write number)\n :_>";
+                    type_variable = 0;
+                    while(type_variable < 1 || type_variable > 6){
+                    std::cout << "type: [1]int [2]double [3]float [4]string [5]bool [6]auto\n(Enter num)\n:_>";
                     std::cin >> type_variable;
                         if (type_variable < 1 || type_variable > 6) {
                             std::cout << "type error's, return type" << std::endl;
-                            system("cls");
+                            system("clear");
                         }
-                    std::cout << "name-[" << i << "] variable \n :_> ";
+                    }
+                    std::cout << "[" << i + 1 << "]-name\n:_> ";
                     std::cin >> name_variable;
 
                     Variable var;
                     var.name = name_variable;
 
                     if (type_variable == 1) {
-                        std::cout << "variable[" << i << "]-" << name_variable << " = meaning[INT]? \n :_>";
+                        std::cout << "variable[" << i+1 << "]-" << name_variable << " = meaning[INT]? \n :_>";
                         std::cin >> variable_int;
                         var.type = "int";
                         var.value = std::to_string(variable_int);
@@ -143,7 +174,7 @@ int main() {
                         vector_variable.push_back("int " + name_variable + " = " + std::to_string(variable_int) + ";");
                     }
                     else if (type_variable == 2) {
-                        std::cout << "variable[" << i << "]-" << name_variable << " = meaning[DOUBLE]? \n :_>";
+                        std::cout << "variable[" << i+1 << "]-" << name_variable << " = meaning[DOUBLE]? \n :_>";
                         std::cin >> variable_double;
                         var.type = "double";
                         var.value = std::to_string(variable_double);
@@ -151,7 +182,7 @@ int main() {
                         vector_variable.push_back("double " + name_variable + " = " + std::to_string(variable_double) + ";");
                     }
                     else if (type_variable == 3) {
-                        std::cout << "variable[" << i << "]-" << name_variable << " = meaning[FLOAT]? \n :_>";
+                        std::cout << "variable[" << i+1 << "]-" << name_variable << " = meaning[FLOAT]? \n :_>";
                         std::cin >> variable_float;
                         var.type = "float";
                         var.value = std::to_string(variable_float);
@@ -159,7 +190,7 @@ int main() {
                         vector_variable.push_back("float " + name_variable + " = " + std::to_string(variable_float) + ";");
                     }
                     else if (type_variable == 4) {
-                        std::cout << "variable[" << i << "]-" << name_variable << " = meaning[STRING]? (don't write \""")  \n : _>";
+                        std::cout << "variable[" << i+1 << "]-" << name_variable << " = meaning[STRING]? (don't write \""")  \n : _>";
                         std::cin >> variable_string;
                         var.type = "std::string";
                         var.value = "\"" + variable_string + "\"";
@@ -167,7 +198,7 @@ int main() {
                         vector_variable.push_back("std::string " + name_variable + " = \"" + variable_string + "\";");
                     }
                     else if (type_variable == 5) {
-                        std::cout << "variable[" << i << "]-" << name_variable << " = meaning[BOOL]? 1.true 2.false (WRITING NUMBER 1 or 2)\n :_>";
+                        std::cout << "variable[" << i+1 << "]-" << name_variable << " = meaning[BOOL]? [1]true [2]false (enter number)\n :_>";
                         std::cin >> answer_bool;
                         var.type = "bool";
                         if (answer_bool == 1) {
@@ -181,7 +212,7 @@ int main() {
                         variables_variable.push_back(var);
                     }
                     else if (type_variable == 6) {
-                        std::cout << "variable[" << i << "]-" << name_variable << " = meaning[AUTO]? if meaning string, writing \" \" \n :_>";
+                        std::cout << "variable[" << i << "]-" << name_variable << " = meaning[AUTO]? (if meaning string, writing) \" \" \n :_>";
                         std::cin >> variable_var;
                         var.type = "auto";
                         var.value = variable_var;
@@ -189,13 +220,12 @@ int main() {
                         vector_variable.push_back("auto " + name_variable + " = " + variable_var + ";");
                     }
                 }
-                system("cls");
+                system("clear");
                 break;
-
             case 3://Creating cycles
                 answer_cycles = "";
 
-                std::cout << "what using cycles (1.for 2.while 3.do-while) \n :_>";
+                std::cout << "cycles: [1]for [2]while [3]do-while\n:_>";
                 std::getline(std::cin, answer_cycles);
 
                 ss_cycles >> answer_cycles;
@@ -208,7 +238,7 @@ int main() {
                 for (int i = 0; i < selected_numbers_cycles.size(); i++) {
                     if (selected_numbers_cycles[i] == 1) {
                         vector_cycles.push_back("for(int i = 0; i < ...; i++) {");
-                        vector_cycles.push_back("    //code_cycles_1");
+                        vector_cycles.push_back("    //code_cycles");
                         vector_cycles.push_back("}");
                     }
                     if (selected_numbers_cycles[i] == 2) {
@@ -222,7 +252,7 @@ int main() {
                         vector_cycles.push_back("} while(/*condition*/);");
                     }
                 }
-                system("cls");
+                system("clear");
                 break;
 
             case 4://Cases creating switch case
@@ -246,17 +276,16 @@ int main() {
                 }
 
                 for (int j = 0; j < col_case; j++) {
-                    vector_case.push_back("case " + std::to_string(j) + ":");
+                    vector_case.push_back("case " + std::to_string(j+1) + ":"); //*j+1
                     vector_case.push_back("    break;");
                 }
                 vector_default.push_back("default:");
                 vector_default.push_back("    break;");
                 vector_default.push_back("}");
 
-                system("cls");
+                system("clear");
                 break;
             case 5://Cases creating if()
-                vector_if.clear();
                 col_if = -1;
                 while (col_if <= 0) {
                     std::cout << "col-if() \n _>";
@@ -270,14 +299,13 @@ int main() {
                     vector_if.push_back("    /*Condition*/");
                     vector_if.push_back("}");
                 }
-                system("cls");
+                system("clear");
                 break;
 
             case 6://Cases creating else if()
-                vector_else_if.clear();
                 col_else_if = -1;
                 while (col_else_if <= 0) {
-                    std::cout << "col-else if() \n _>";
+                    std::cout << "col else-if() \n _>";
                     std::cin >> col_else_if;
                     if (col_else_if <= 0) {
                         std::cout << "col-else if error's" << std::endl;
@@ -288,10 +316,9 @@ int main() {
                     vector_else_if.push_back("    /*Condition*/");
                     vector_else_if.push_back("}");
                 }
-                system("cls");
+                system("clear");
                 break;
             case 7://Cases creating arr
-                vector_arr.clear();
                 col_arr = -1;
                 while (col_arr <= 0) {
                     std::cout << "col arr \n _>";
@@ -311,24 +338,22 @@ int main() {
                     }
                     vector_arr.push_back("int arr" + std::to_string(i) + "[" + std::to_string(size_arr) + "];");
                 }
-                system("cls");
+                system("clear");
                 break;
             case 8://Cases creating dimensional arr
-                vector_dimensional_arr.clear();
                 col_dimensional_arr = -1;
                 while (col_dimensional_arr <= 0) {
-                    std::cout << "col arr[][] \n _>";
+                    std::cout << "col arr[][]\n:_>";
                     std::cin >> col_dimensional_arr;
                     if (col_dimensional_arr <= 0) {
                         std::cout << "arr[][] incorected" << std::endl;
                     }
                 }
-
                 for (int i = 0; i < col_dimensional_arr; i++) {
                     size_arr_d_1 = 0;
                     size_arr_d_2 = 0;
                     while (size_arr_d_1 <= 0 || size_arr_d_2 <= 0) {
-                        std::cout << "size[][] = ";
+                        std::cout << "size[?][?] = ";
                         std::cin >> size_arr_d_1 >> size_arr_d_2;
                         if (size_arr_d_1 <= 0 || size_arr_d_2 <= 0) {
                             std::cout << "size_arr[][] incorrected size[?][?]" << std::endl;
@@ -336,24 +361,22 @@ int main() {
                     }
                     vector_dimensional_arr.push_back("int arr_" + std::to_string(i) + "[" + std::to_string(size_arr_d_1) + "]" + "[" + std::to_string(size_arr_d_2) + "];");
                 }
-                system("cls");
+                system("clear");
                 break;
 
             case 9://cases creating dynamic arr
-                vector_dynamic_arr.clear();
-                delete_dynamic_arr.clear();
                 col_dynamic_arr = -1;
                 while (col_dynamic_arr <= 0) {
-                    std::cout << "col d_arr: _>";
+                    std::cout << "col d_arr :_>";
                     std::cin >> col_dynamic_arr;
                     if (col_dynamic_arr <= 0) {
-                        std::cout << "error's col > 0" << std::endl;
+                        std::cout << "error's col <= 0" << std::endl;
                     }
                 }
                 for (int i = 0; i < col_dynamic_arr; i++) {
                     size_dynamic_arr = 0;
                     while (size_dynamic_arr <= 0) {
-                        std::cout << "size " << i + 1 << " arr = ";
+                        std::cout << "size " << i + 1 << " arr = _";
                         std::cin >> size_dynamic_arr;
                         if (size_dynamic_arr <= 0) {
                             std::cout << "error's size" << std::endl;
@@ -362,9 +385,8 @@ int main() {
                     vector_dynamic_arr.push_back("int* arr_d_" + std::to_string(i) + " = new int[" + std::to_string(size_dynamic_arr) + "];");
                     delete_dynamic_arr.push_back("delete[] arr_d_" + std::to_string(i) + ";");
                 }
-                system("cls");
+                system("clear");
                 break;
-
             case 10://Cases creaint function
                 std::cout << "return type (void, int, double, float, string, bool): ";
                 std::getline(std::cin, ret_type);
@@ -392,7 +414,7 @@ int main() {
                 func_code += "}\n";
 
                 vector_function.push_back(func_code);
-                system("cls");
+                system("clear");
                 break;
 
             case 11: //Cases creating vector
@@ -417,9 +439,119 @@ int main() {
                     }
                 }
                 vector_vectorov.push_back("std::vector<" + type_vector + "> " + name_vector + "(" + std::to_string(size_vector) + ");");
-                system("cls");
+                system("clear");
                 break;
+            case 12:{
+            for(int i = 0 ; i < vector_library.size() ; i++){
+                if(vector_library.at(i) != "#include <fstream>"){
+                    vector_library.push_back("#include <fstream>");
+                }
+            }
+            while(answer_fstream < 1 || answer_fstream > 3){
+                std::cout << "1.fstream 2.ofstream 3.ifstream \n_>";
+                std::cin >> answer_fstream;
+                if(answer_fstream < 1 || answer_fstream > 3){
+                    std::cerr << "Enter Error" << std::endl;
+                    system("clear");
+                }
+            }
+            if(answer_fstream == 1){
+                std::cout << "write name fstream [...]()\n:_> ";
+                std::cin >> fstream;
 
+                std::cout << "create file? fstream " << fstream << "(...)? (if no ENTER)\n:_>";
+                std::cin >> fstream_file;
+
+                vector_fstream.push_back("fstream " + fstream + "(" + fstream_file + ");");
+            }
+            else if(answer_fstream == 2){
+                std::cout << "write name ofstream [...]()\n:_>";
+                std::cin >> stream_ofstream;
+
+                std::cout << "listing file? (if no ENTER)\n:_>";
+                std::cin >> listing_file_name;
+
+                vector_ofstream.push_back("ofstream " + stream_ofstream + "(" + listing_file_name + ");");
+            }
+            else if(answer_fstream == 3){
+                std::cout << "write name ifstream [...]() \n :_>";
+                std::cin >> listing_ifstream;
+
+                std::cout << "write file? (if no ENTER)\n:_>";
+                std::cin >> write_file;
+
+                vector_ifstream.push_back("ifstream " + listing_ifstream + "(" + write_file + ");");
+            }
+            break;
+            }
+            case 13:{
+            answer_OOP = -1;
+            while(answer_OOP != 0){
+            std::cout << " _________________________" << std::endl;
+            std::cout << "/#########################/" << std::endl;
+            std::cout << "=========================#|" << std::endl;
+            std::cout << "|      MENU OOP C++     |#|" << std::endl;
+            std::cout << "|=======================|#|" << std::endl;
+            std::cout << "|1.class 2.struct 0.exit|#|" << std::endl;
+            std::cout << "|=======================|#|" << std::endl;
+            std::cout << "---------------------------" << std::endl;
+            std::cout << "          answer: ";
+            std::cin >> answer_OOP;
+            
+            switch(answer_OOP){
+                case 1:
+                system("clear");
+                std::cout << "class name\n:_>";
+                std::cin >> name_class;
+                vector_class.push_back("class " + name_class + "{");
+
+                std::cout << "1.public or 2.private?\n:_>";                
+                while(public_or_private != 1 && public_or_private != 2){
+                    std::cin >> public_or_private;
+                    if(public_or_private != 1 && public_or_private != 2){
+                        std::cerr << "Enter Error" << std::endl;
+                    }
+                }
+
+                if(public_or_private == 1){
+                    vector_class.push_back("public:");
+                    anything_class = "";
+                    std::cout << "if stop, Enter [STOP]\n";
+                    while(anything_class != "STOP"){
+                        std::getline(std::cin, anything_class);
+                        vector_class.push_back(anything_class);
+                    }
+                }
+                else if(public_or_private == 2){
+                    anything_class = "";
+                    vector_class.push_back("private:");
+                    std::cout << "if write stop ENTER[STOP]\n:_>";
+                    while(anything_class != "STOP"){
+                        std::getline(std::cin, anything_class);
+                        vector_class.push_back(anything_class);
+                    }
+                }
+                vector_class.push_back("};");
+                break;
+                case 2:{
+                std::cout << "name struct: ";
+                std::cin >> name_struct;
+                
+                std:: cout << "if write stoped enter(STOP)\n:_>";
+                while(anything_struct != "STOP"){
+                    std::getline(std::cin, anything_struct);
+                    vector_struct.push_back(anything_struct);
+                }
+                break;
+                
+                }
+                default:
+                std::cerr << "choice error" << std::endl;
+                break;
+            }
+            system("clear");
+            break;
+            }
             case 0: {//case creating cpp file and open this file
                 for (int i = 0; i < vector_library.size(); i++) {
                     out << vector_library[i] << std::endl;
@@ -429,6 +561,14 @@ int main() {
                     out << vector_function[i] << std::endl;
                 }
 
+                for(int i = 0 ; i < vector_class.size() ; i++){
+                    out << vector_class[i] << std::endl;
+                }
+
+                for(int i = 0 ; i < vector_struct.size() ; i++){
+                    out << vector_struct[i] << std::endl;
+                }
+
                 out << "int main() {" << std::endl;
 
                 for (int i = 0; i < vector_variable.size(); i++) {
@@ -471,20 +611,39 @@ int main() {
                 for (int i = 0; i < vector_vectorov.size(); i++) {
                     out << "    " << vector_vectorov[i] << std::endl;
                 }
+                for(int i = 0; i < vector_ifstream.size();i++){
+                    out << "    " << vector_ifstream[i] << std::endl;
+                }
+                for(int i = 0 ; i < vector_ofstream.size();i++){
+                    out << "    " << vector_ofstream[i] << std::endl;
+                }
+                for(int i = 0 ; i < vector_fstream.size();i++){
+                    out << "    " << vector_fstream[i] << std::endl;
+                }
                 out << std::endl;
                 out << "    return 0;" << std::endl;
                 out << "}" << std::endl;
+
                 out.close();
+                
                 command = "start " + name_file + ".cpp";
                 system(command.c_str());
                 break;
-            case -1://creating cpp file and not opening
+            }
+            case -1:{//creating cpp file and not opening
                 for (int i = 0; i < vector_library.size(); i++) {
                     out << vector_library[i] << std::endl;
                 }
                 for (int i = 0; i < vector_function.size(); i++) {
                     out << vector_function[i] << std::endl;
                 }
+                for(int i = 0 ; i < vector_class.size() ; i++){
+                    out << vector_class[i] << std::endl;
+                }
+
+                for(int i = 0 ; i < vector_struct.size() ; i++){
+                    out << vector_struct[i] << std::endl;
+                }
                 out << "int main() {" << std::endl;
                 for (int i = 0; i < vector_variable.size(); i++) {
                     out << "    " << vector_variable[i] << std::endl;
@@ -528,17 +687,109 @@ int main() {
                     out << "    " << vector_vectorov[i] << std::endl;
                 }
 
+                for(int i = 0; i < vector_ifstream.size();i++){
+                    out << "    " << vector_ifstream[i] << std::endl;
+                }
+                for(int i = 0 ; i < vector_ofstream.size();i++){
+                    out << "    " << vector_ofstream[i] << std::endl;
+                }
+                for(int i = 0 ; i < vector_fstream.size();i++){
+                    out << "    " << vector_fstream[i] << std::endl;
+                }
+
                 out << std::endl;
                 out << "    return 0;" << std::endl;
                 out << "}" << std::endl;
                 break;
+            }
+            case -2:{//check result creating
+            for (int i = 0; i < vector_library.size(); i++) {
+                    std::cout << vector_library[i] << std::endl;
+                }
+                for (int i = 0; i < vector_function.size(); i++) {
+                    std::cout << vector_function[i] << std::endl;
+                }
+                for(int i = 0 ; i < vector_class.size() ; i++){
+                    std::cout << vector_class[i] << std::endl;
+                }
+
+                for(int i = 0 ; i < vector_struct.size() ; i++){
+                    std::cout << vector_struct[i] << std::endl;
+                }
+                std::cout << "int main() {" << std::endl;
+                for (int i = 0; i < vector_variable.size(); i++) {
+                    std::cout << "    " << vector_variable[i] << std::endl;
+                }
+                for (int i = 0; i < vector_cycles.size(); i++) {
+                    std::cout << "    " << vector_cycles[i] << std::endl;
+                }
+                for (int sw = 0; sw < col_switch; sw++) {
+                    if (sw < vector_switch.size()) {
+                        std::cout << "    " << vector_switch[sw] << std::endl;
+                    }
+
+                    for (int i = 0; i < vector_case.size(); i++) {
+                        std::cout << "        " << vector_case[i] << std::endl;
+                    }
+
+                    for (int i = 0; i < vector_default.size(); i++) {
+                        std::cout << "        " << vector_default[i] << std::endl;
+                    }
+                }
+
+                for (int i = 0; i < vector_if.size(); i++) {
+                    std::cout << "    " << vector_if[i] << std::endl;
+                }
+                for (int i = 0; i < vector_else_if.size(); i++) {
+                    std::cout << "    " << vector_else_if[i] << std::endl;
+                }
+                for (int i = 0; i < vector_arr.size(); i++) {
+                    std::cout << "    " << vector_arr[i] << std::endl;
+                }
+                for (int i = 0; i < vector_dimensional_arr.size(); i++) {
+                    std::cout << "    " << vector_dimensional_arr[i] << std::endl;
+                }
+                for (int i = 0; i < vector_dynamic_arr.size(); i++) {
+                    std::cout << "    " << vector_dynamic_arr[i] << std::endl;
+                }
+                for (int i = 0; i < delete_dynamic_arr.size(); i++) {
+                    std::cout << "    " << delete_dynamic_arr[i] << std::endl;
+                }
+                for (int i = 0; i < vector_vectorov.size(); i++) {
+                    std::cout << "    " << vector_vectorov[i] << std::endl;
+                }
+
+                for(int i = 0; i < vector_ifstream.size();i++){
+                    std::cout << "    " << vector_ifstream[i] << std::endl;
+                }
+                for(int i = 0 ; i < vector_ofstream.size();i++){
+                    std::cout << "    " << vector_ofstream[i] << std::endl;
+                }
+                for(int i = 0 ; i < vector_fstream.size();i++){
+                    std::cout << "    " << vector_fstream[i] << std::endl;
+                }
+
+                std::cout << std::endl;
+                std::cout << "    return 0;" << std::endl;
+                std::cout << "}" << std::endl;
+            break;
+            case -3:
+                out.close();
+                if(remove((name_file + ".cpp").c_str()) == 0){
+                    std::cout << "file deleted." << std::endl;
+                } else{
+                    std::cout << "file not deleted or searching" << std::endl;
+                }
+                std::cout << "Bye..." << std::endl;
+            break;
             }
             default:
                 std::cerr << "choice error" << std::endl;
                 break;
             }
         }
-        system("cls"); 
+        system("clear"); 
         out.close();
         return EXIT_SUCCESS;
+    }
 }
