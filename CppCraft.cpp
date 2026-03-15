@@ -4,7 +4,7 @@ Read file READ_ME to learn about the project.
 #include <iostream> //*Ввод/Вывод
 #include <string> //*Работа со строками
 #include <vector> //*Вектор для хранения
-#include <cstdlib> //*Для system(...)
+#include <cstdlib> //*Для system(...) и return EXIT_SUCCESS/FAILURE
 #include <cstdio> //* remove()
 #include <sstream> //*Разбиение строк на числа
 #include <fstream> //*Запись/Чтение
