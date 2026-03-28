@@ -1,9 +1,11 @@
 /*
 Read file READ_ME to learn about the project.
+It's a project helping writing code C++
 */
 #include <iostream> //*Ввод/Вывод
 #include <string> //*Работа со строками
 #include <vector> //*Вектор для хранения
+#include <print>
 #include <cstdlib> //*Для system(...) и return EXIT_SUCCESS/FAILURE
 #include <cstdio> //* remove()
 #include <sstream> //*Разбиение строк на числа
@@ -16,7 +18,7 @@ struct Variable {
     std::string name; 
     std::string value;
 };
-int main() {
+auto main() -> int {
     std::string write_file, ssbufer, struct_anything_string, class_struct, fstream_file, listing_file_name;
     std::string anything_class, stream_ofstream, listing_ifstream, anything_struct, stream, fstream, ifstream, ofstream, name_class, name_struct, command, type_vector, name_vector, variable_var, func_code, answer_cycles, numbering, name_variable;
     std::string variable_string, libName, input, name_file, answer, search = "#include <vector>", ret_type, name, params;
@@ -32,14 +34,14 @@ int main() {
     std::vector<std::string> vector_ofstream, vector_ifstream, cycles_for, cycles_while, cycles_do_while, vector_library, vector_switch, vector_case, vector_default, vector_if, vector_else_if;
     std::vector<std::string> vector_fstream, vector_class, vector_struct, vector_arr, vector_dimensional_arr, vector_dynamic_arr, delete_dynamic_arr, vector_function, vector_vectorov, vector_variable, vector_cycles;
     
-    std::vector<std::string> library = { "<algorithm>","<array>", "<atomic>","<barrier>","<bitset>","<bit>","<chrono>","<complex>","<concepts>","<condition_variable>","<coroutine>","<deque>","<exception>","<execution>","<forward_list>","<format>","<fstream>","<functional>","<future>","<initializer_list>","<iomanip>","<ios>","<iosfwd>","<iostream>","<istream>","<iterator>","<latch>","<limits>","<list>","<locale>","<map>","<memory>","<memory_resource>","<mutex>","<new>","<numeric>","<optional>","<ostream>","<queue>","<random>","<ranges>","<ratio>","<regex>","<scoped_allocator>","<set>","<shared_mutex>","<sstream>","<stack>","<stdexcept>","<streambuf>","<stop_token>","<string>","<string_view>","<system_error>","<thread>","<tuple>","<type_traits>","<typeindex>","<typeinfo>","<unordered_map>","<unordered_set>","<utility>","<valarray>","<variant>","<vector>","<version>","<charconv>","<compare>","<cassert>","<cctype>","<cerrno>","<cfenv>","<cfloat>","<cinttypes>","<ciso646>","<climits>","<clocale>","<cmath>","<cstdbool>","<cstddef>","<cstdint>","<cstdio>","<cstdlib>","<cstring>","<ctgmath>","<cuchar>","<cwchar>","<cwctype>","<ccomplex>" };
+    const std::vector<std::string> library = { "<algorithm>","<array>", "<atomic>","<barrier>","<bitset>","<bit>","<chrono>","<complex>","<concepts>","<condition_variable>","<coroutine>","<deque>","<exception>","<execution>","<forward_list>","<format>","<fstream>","<functional>","<future>","<initializer_list>","<iomanip>","<ios>","<iosfwd>","<iostream>","<istream>","<iterator>","<latch>","<limits>","<list>","<locale>","<map>","<memory>","<memory_resource>","<mutex>","<new>","<numeric>","<optional>","<ostream>","<queue>","<random>","<ranges>","<ratio>","<regex>","<scoped_allocator>","<set>","<shared_mutex>","<sstream>","<stack>","<stdexcept>","<streambuf>","<stop_token>","<string>","<string_view>","<system_error>","<thread>","<tuple>","<type_traits>","<typeindex>","<typeinfo>","<unordered_map>","<unordered_set>","<utility>","<valarray>","<variant>","<vector>","<version>","<charconv>","<compare>","<cassert>","<cctype>","<cerrno>","<cfenv>","<cfloat>","<cinttypes>","<ciso646>","<climits>","<clocale>","<cmath>","<cstdbool>","<cstddef>","<cstdint>","<cstdio>","<cstdlib>","<cstring>","<ctgmath>","<cuchar>","<cwchar>","<cwctype>","<ccomplex>" };
     
     std::vector<int> selected_numbers_cycles;
     std::vector<Variable> variables_variable;
     
     bool has_iostream = false, has_string = false;
     
-    std::cout << "name file(don't write .cpp)\n:_>";
+    std::println("name file(don't write .cpp)\n:_>");
     std::getline(std::cin, name_file);
     std::ofstream out(name_file + ".cpp"); // creating and open file from writing. 
     if (!out.is_open()) { // checking file opening or not.
@@ -47,22 +49,22 @@ int main() {
         return EXIT_FAILURE;
     }
     while (answer_Cpp_Craft_Project != 0 && answer_Cpp_Craft_Project != -1) {
-        std::cout << "  }--------------------------------{  " << std::endl;
-        std::cout << "}-----Cpp Craft Code By N.Y.RPO3-----{" << std::endl;
-        std::cout << "  }--------------------------------{  " << std::endl;
-        std::cout << "____________________________________" << std::endl;
-        std::cout << "| [1]-libraries   [10]-function    |" << std::endl;
-        std::cout << "| [2]-variables   [11]-vector      |" << std::endl;
-        std::cout << "| [3]-cycles      [12]-fstream     |" << std::endl;
-        std::cout << "| [4]-switch_case [13]-OOP         |" << std::endl;
-        std::cout << "| [5]-if                           |" << std::endl;
-        std::cout << "| [6]-else if   [-3]-exit no create|" << std::endl;
-        std::cout << "| [7]-arr[]     [-2]-check result  |" << std::endl;
-        std::cout << "| [8]-arr[][]   [-1]-save and exit |" << std::endl;
-        std::cout << "| [9]-d_arr     [ 0]-save and start|" << std::endl;
-        std::cout << "|-----------------------------------|" << std::endl;
-        std::cout << "|" << std::endl;
-        std::cout << "L------------->answer: ";
+        std::println("  >--------------------------------<  ");
+        std::println(">-----Cpp Craft Code By N.Y.RPO3-----<");
+        std::println("  >--------------------------------<  ");
+        std::println("____________________________________");
+        std::println("| [1]-libraries   [10]-function    |");
+        std::println("| [2]-variables   [11]-vector      |");
+        std::println("| [3]-cycles      [12]-fstream     |");
+        std::println("| [4]-switch_case [13]-OOP         |");
+        std::println("| [5]-if                           |");
+        std::println("| [6]-else if   [-3]-exit no create|");
+        std::println("| [7]-arr[]     [-2]-check result  ");
+        std::println("| [8]-arr[][]   [-1]-save and exit |");
+        std::println("| [9]-d_arr     [ 0]-save and start|");
+        std::println("|-----------------------------------|");
+        std::println("|");
+        std::println("L------------->answer: ");
 
         std::cin >> answer_Cpp_Craft_Project;
         std::cin.ignore(1024, '\n');
@@ -72,43 +74,43 @@ int main() {
                 has_iostream = false;
                 has_string = false;
 
-                std::cout << "|===================== STANDARD TEMPLATE LIBRARY (STL) HEADERS ====================|\n";
-                std::cout << "|-------------------- Containers & Data Structures --------------------------------|\n";
-                std::cout << "|2. <array> |12. <deque> |15. <forward_list> |29. <list> |31. <map>                |\n";
-                std::cout << "|45. <set> |52. <string> |60. <unordered_map> |61. <unordered_set> |65. <vector>   |\n";
+                std::println("|===================== STANDARD TEMPLATE LIBRARY (STL) HEADERS ====================|");
+                std::println("|-------------------- Containers & Data Structures --------------------------------|");
+                std::println("|2. <array> |12. <deque> |15. <forward_list> |29. <list> |31. <map>                |");
+                std::println("|45. <set> |52. <string> |60. <unordered_map> |61. <unordered_set> |65. <vector>   |");
                 
-                std::cout << "|-------------------- Algorithms & Numerics ---------------------------------------|\n";
-                std::cout << "|1. <algorithm> |36. <numeric> |41. <ranges> |42. <ratio> |63. <valarray>          |\n";
+                std::println("|-------------------- Algorithms & Numerics ---------------------------------------|");
+                std::println("|1. <algorithm> |36. <numeric> |41. <ranges> |42. <ratio> |63. <valarray>          |");
                 
-                std::cout << "|-------------------- Utilities & Metaprogramming ---------------------------------|\n";
-                std::cout << "|5. <bitset> |6. <bit> |16. <format> |20. <initializer_list> |26. <iterator>       |\n";
-                std::cout << "|37. <optional> |53. <string_view> |56. <tuple> |57. <type_traits> |58. <typeindex>|\n";
-                std::cout << "|59. <typeinfo> |62. <utility> |64. <variant> |66. <version> |\n";
+                std::println("|-------------------- Utilities & Metaprogramming ---------------------------------|");
+                std::println("|5. <bitset> |6. <bit> |16. <format> |20. <initializer_list> |26. <iterator>       |");
+                std::println("|37. <optional> |53. <string_view> |56. <tuple> |57. <type_traits> |58. <typeindex>|");
+                std::println("|59. <typeinfo> |62. <utility> |64. <variant> |66. <version> |");
                 
-                std::cout << "|-------------------- Concurrency & Threading -------------------------------------|\n";
-                std::cout << "|3. <atomic> |4. <barrier> |11. <coroutine> |19. <future> |27. <latch>             |\n";
-                std::cout << "|34. <mutex> |46. <shared_mutex> |51. <stop_token> |55. <thread>                   |\n";
+                std::println("|-------------------- Concurrency & Threading -------------------------------------|");
+                std::println("|3. <atomic> |4. <barrier> |11. <coroutine> |19. <future> |27. <latch>             |");
+                std::println("|34. <mutex> |46. <shared_mutex> |51. <stop_token> |55. <thread>                   |");
                 
-                std::cout << "|-------------------- Input/Output & Formatting -----------------------------------|\n";
-                std::cout << "|17. <fstream> |21. <iomanip> |22. <ios> |23. <iosfwd> |24. <iostream>             |\n";
-                std::cout << "|25. <istream> |38. <ostream> |47. <sstream> |50. <streambuf>                      |\n";
+                std::println("|-------------------- Input/Output & Formatting -----------------------------------|");
+                std::println("|17. <fstream> |21. <iomanip> |22. <ios> |23. <iosfwd> |24. <iostream>             |");
+                std::println("|25. <istream> |38. <ostream> |47. <sstream> |50. <streambuf>                      |");
                 
-                std::cout << "|-------------------- Memory Management -------------------------------------------|\n";
-                std::cout << "|32. <memory> |33. <memory_resource> |35. <new> |44. <scoped_allocator>            |\n";
+                std::println("|-------------------- Memory Management -------------------------------------------|");
+                std::println("|32. <memory> |33. <memory_resource> |35. <new> |44. <scoped_allocator>            |");
                 
-                std::cout << "|-------------------- Error Handling & Diagnostics --------------------------------|\n";
-                std::cout << "|13. <exception> |14. <execution> |18. <functional> |39. <queue>                   |\n";
-                std::cout << "|48. <stack> |49. <stdexcept> |54. <system_error> |68. <compare>                   |\n";
+                std::println("|-------------------- Error Handling & Diagnostics --------------------------------|");
+                std::println("|13. <exception> |14. <execution> |18. <functional> |39. <queue>                   |");
+                std::println("|48. <stack> |49. <stdexcept> |54. <system_error> |68. <compare>                   |");
                 
-                std::cout << "|-------------------- C Standard Library Headers ----------------------------------|\n";
-                std::cout << "|69. <cassert> |70. <cctype> |71. <cerrno> |72. <cfenv> |73. <cfloat>              |\n";
-                std::cout << "|74. <cinttypes> |75. <ciso646> |76. <climits> |77. <clocale> |78. <cmath>         |\n";
-                std::cout << "|79. <cstdbool> |80. <cstddef> |81. <cstdint> |82. <cstdio> |83. <cstdlib>         |\n";
-                std::cout << "|84. <cstring> |85. <ctgmath> |86. <cuchar> |87. <cwchar> |88. <cwctype>           |\n";
-                std::cout << "|89. <ccomplex> |\n";
+                std::println("|-------------------- C Standard Library Headers ----------------------------------|");
+                std::println("|69. <cassert> |70. <cctype> |71. <cerrno> |72. <cfenv> |73. <cfloat>              |");
+                std::println("|74. <cinttypes> |75. <ciso646> |76. <climits> |77. <clocale> |78. <cmath>         |");
+                std::println("|79. <cstdbool> |80. <cstddef> |81. <cstdint> |82. <cstdio> |83. <cstdlib>         |");
+                std::println("|84. <cstring> |85. <ctgmath> |86. <cuchar> |87. <cwchar> |88. <cwctype>           |");
+                std::println("|89. <ccomplex> |\n");
                 
-                std::cout << "|=========================== ADD LIBRARIES ========================================|\n";
-                std::cout << "Enter library numbers or name <name> (1-89):\n _>";
+                std::println("|=========================== ADD LIBRARIES ========================================|");
+                std::println("Enter library numbers or name <name> (1-89):\n _>");
                 std::getline(std::cin, input);
     
                 if (!input.empty() && input[0] == '<') {
@@ -120,21 +122,21 @@ int main() {
                     std::stringstream ss_lib(input);
                     int lib_num;
                     while (ss_lib >> lib_num) {
-                        if (lib_num >= 1 && lib_num <= (int)library.size()) {
+                        if (lib_num >= 1 && lib_num <= library.size()) {
                             vector_library.push_back("#include " + library[lib_num - 1]);
                         }
                     }
                 }
-                for (int i = 0; i < vector_library.size(); i++) { 
-                    if (vector_library[i] == "#include <iostream>") has_iostream = true;
-                    if (vector_library[i] == "#include <string>") has_string = true;
+                for (const auto& i : vector_library) { 
+                    if (i == "#include <iostream>") has_iostream = true;
+                    if (i == "#include <string>") has_string = true;
                 }
 
                 if (!has_iostream) {
-                    vector_library.push_back("#include <iostream>");
+                    vector_library.emplace_back("#include <iostream>");
                 }
                 if (!has_string) {
-                    vector_library.push_back("#include <string>");
+                    vector_library.emplace_back("#include <string>");
                 }
                 system("clear");
                 break;
@@ -142,31 +144,31 @@ int main() {
             case 2://Creating variables
                 col_variable = 0;
                 while (col_variable <= 0) {
-                    std::cout << "col variable: " << std::endl;
+                    std::println("col variable: ");
                     std::cin >> col_variable;
                     if (col_variable <= 0) {
-                        std::cout << "col_variable incorrected" << std::endl;
+                        std::println("col_variable incorrected");
                     }
                 }
 
                 for (int i = 0; i < col_variable; i++) {
                     type_variable = 0;
                     while(type_variable < 1 || type_variable > 6){
-                    std::cout << "type: [1]int [2]double [3]float [4]string [5]bool [6]auto\n(Enter num)\n:_>";
+                    std::print("type: [1]int [2]double [3]float [4]string [5]bool [6]auto\n(Enter num)\n:_>");
                     std::cin >> type_variable;
                         if (type_variable < 1 || type_variable > 6) {
-                            std::cout << "type error's, return type" << std::endl;
+                            std::println("type error's, return type");
                             system("clear");
                         }
                     }
-                    std::cout << "[" << i + 1 << "]-name\n:_> ";
+                    std::print("[{}]-name\n:_> ", i+1);
                     std::cin >> name_variable;
 
                     Variable var;
                     var.name = name_variable;
 
                     if (type_variable == 1) {
-                        std::cout << "variable[" << i+1 << "]-" << name_variable << " = meaning[INT]? \n :_>";
+                        std::print("variable[{}]- {} = meaning[int]? \n :_>", i+1, name_variable);
                         std::cin >> variable_int;
                         var.type = "int";
                         var.value = std::to_string(variable_int);
@@ -174,7 +176,7 @@ int main() {
                         vector_variable.push_back("int " + name_variable + " = " + std::to_string(variable_int) + ";");
                     }
                     else if (type_variable == 2) {
-                        std::cout << "variable[" << i+1 << "]-" << name_variable << " = meaning[DOUBLE]? \n :_>";
+                        std::print("variable[{}]- {} = meaning[double]? \n :_>", i+1, name_variable);
                         std::cin >> variable_double;
                         var.type = "double";
                         var.value = std::to_string(variable_double);
@@ -182,7 +184,7 @@ int main() {
                         vector_variable.push_back("double " + name_variable + " = " + std::to_string(variable_double) + ";");
                     }
                     else if (type_variable == 3) {
-                        std::cout << "variable[" << i+1 << "]-" << name_variable << " = meaning[FLOAT]? \n :_>";
+                        std::print("variable[{}]- {} = meaning[float]? \n :_>", i+1, name_variable);
                         std::cin >> variable_float;
                         var.type = "float";
                         var.value = std::to_string(variable_float);
@@ -190,7 +192,7 @@ int main() {
                         vector_variable.push_back("float " + name_variable + " = " + std::to_string(variable_float) + ";");
                     }
                     else if (type_variable == 4) {
-                        std::cout << "variable[" << i+1 << "]-" << name_variable << " = meaning[STRING]? (don't write \""")  \n : _>";
+                        std::print("variable[{}]- {} = meaning[string]? \n :_>", i+1, name_variable);
                         std::cin >> variable_string;
                         var.type = "std::string";
                         var.value = "\"" + variable_string + "\"";
@@ -198,7 +200,7 @@ int main() {
                         vector_variable.push_back("std::string " + name_variable + " = \"" + variable_string + "\";");
                     }
                     else if (type_variable == 5) {
-                        std::cout << "variable[" << i+1 << "]-" << name_variable << " = meaning[BOOL]? [1]true [2]false (enter number)\n :_>";
+                        std::print("variable[{}]- {} = meaning[bool]? \n :_>", i+1, name_variable);
                         std::cin >> answer_bool;
                         var.type = "bool";
                         if (answer_bool == 1) {
@@ -212,7 +214,7 @@ int main() {
                         variables_variable.push_back(var);
                     }
                     else if (type_variable == 6) {
-                        std::cout << "variable[" << i << "]-" << name_variable << " = meaning[AUTO]? (if meaning string, writing) \" \" \n :_>";
+                        std::println("variable[{}] - {} = meaning[AUTO]? (if meaning string, writing) \" \" \n :_>", i, name_variable);
                         std::cin >> variable_var;
                         var.type = "auto";
                         var.value = variable_var;
@@ -225,7 +227,7 @@ int main() {
             case 3://Creating cycles
                 answer_cycles = "";
 
-                std::cout << "cycles: [1]for [2]while [3]do-while\n:_>";
+                std::print("cycles: [1]for [2]while [3]do-while\n:_>");
                 std::getline(std::cin, answer_cycles);
 
                 ss_cycles >> answer_cycles;
