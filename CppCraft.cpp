@@ -6,7 +6,29 @@
 #include <cstdio>
 #include <sstream>
 #include <fstream>
+#ifdef __WiN32
 
+#endif
+#ifdef __linux
+
+#endif
+auto printMenu() -> void {
+    std::println("|===================== STANDART LIBRARY C++26 =====================|");
+    std::println(" 1:<algorithm>   2:<array>       3:<atomic>       4:<barrier>      5:<bitset>       6:<bit>          7:<chrono>       8:<complex>");
+    std::println(" 9:<concepts>   10:<condition_variable> 11:<coroutine>   12:<deque>      13:<exception>   14:<execution>   15:<forward_list> 16:<format>");
+    std::println("17:<fstream>    18:<functional> 19:<future>      20:<initializer_list> 21:<iomanip>     22:<ios>         23:<iosfwd>      24:<iostream>");
+    std::println("25:<istream>    26:<iterator>   27:<latch>       28:<limits>      29:<list>        30:<locale>      31:<map>         32:<memory>");
+    std::println("33:<memory_resource> 34:<mutex>       35:<new>         36:<numeric>     37:<optional>    38:<ostream>     39:<queue>       40:<random>");
+    std::println("41:<ranges>     42:<ratio>      43:<regex>       44:<scoped_allocator> 45:<set>         46:<shared_mutex> 47:<sstream>     48:<stack>");
+    std::println("49:<stdexcept>  50:<streambuf>  51:<stop_token>  52:<string>      53:<string_view> 54:<system_error> 55:<thread>      56:<tuple>");
+    std::println("57:<type_traits> 58:<typeindex>  59:<typeinfo>    60:<unordered_map> 61:<unordered_set> 62:<utility>     63:<valarray>    64:<variant>");
+    std::println("65:<vector>     66:<version>    67:<charconv>    68:<compare>     69:<cassert>     70:<cctype>      71:<cerrno>      72:<cfenv>");
+    std::println("73:<cfloat>     74:<cinttypes>  75:<ciso646>     76:<climits>     77:<clocale>     78:<cmath>       79:<cstdbool>    80:<cstddef>");
+    std::println("81:<cstdint>    82:<cstdio>     83:<cstdlib>     84:<cstring>     85:<ctgmath>     86:<cuchar>      87:<cwchar>      88:<cwctype>");
+    std::println("89:<ccomplex>");
+    std::println("|=========================================================|\n");
+    std::println("Enter library numbers or name <name> (1-89):");
+}
 struct Variable {
     std::string type; 
     std::string name; 
@@ -28,8 +50,7 @@ auto main() -> int {
     std::vector<std::string> vector_ofstream, vector_ifstream, cycles_for, cycles_while, cycles_do_while, vector_library, vector_switch, vector_case, vector_default, vector_if, vector_else_if;
     std::vector<std::string> vector_fstream, vector_class, vector_struct, vector_arr, vector_dimensional_arr, vector_dynamic_arr, delete_dynamic_arr, vector_function, vector_vectorov, vector_variable, vector_cycles;
     
-    const std::vector<std::string> library = { "<algorithm>","<array>", "<atomic>","<barrier>","<bitset>","<bit>","<chrono>","<complex>","<concepts>","<condition_variable>","<coroutine>","<deque>","<exception>","<execution>","<forward_list>","<format>","<fstream>","<functional>","<future>","<initializer_list>","<iomanip>","<ios>","<iosfwd>","<iostream>","<istream>","<iterator>","<latch>","<limits>","<list>","<locale>","<map>","<memory>","<memory_resource>","<mutex>","<new>","<numeric>","<optional>","<ostream>","<queue>","<random>","<ranges>","<ratio>","<regex>","<scoped_allocator>","<set>","<shared_mutex>","<sstream>","<stack>","<stdexcept>","<streambuf>","<stop_token>","<string>","<string_view>","<system_error>","<thread>","<tuple>","<type_traits>","<typeindex>","<typeinfo>","<unordered_map>","<unordered_set>","<utility>","<valarray>","<variant>","<vector>","<version>","<charconv>","<compare>","<cassert>","<cctype>","<cerrno>","<cfenv>","<cfloat>","<cinttypes>","<ciso646>","<climits>","<clocale>","<cmath>","<cstdbool>","<cstddef>","<cstdint>","<cstdio>","<cstdlib>","<cstring>","<ctgmath>","<cuchar>","<cwchar>","<cwctype>","<ccomplex>" };
-    
+    const std::vector<std::string> library = {"<algorithm>","<array>","<atomic>","<barrier>","<bitset>","<bit>","<chrono>","<complex>","<concepts>","<condition_variable>","<coroutine>","<deque>","<exception>","<execution>","<forward_list>","<format>","<fstream>","<functional>","<future>","<initializer_list>","<iomanip>","<ios>","<iosfwd>","<iostream>","<istream>","<iterator>","<latch>","<limits>","<list>","<locale>","<map>","<memory>","<memory_resource>","<mutex>","<new>","<numeric>","<optional>","<ostream>","<queue>","<random>","<ranges>","<ratio>","<regex>","<scoped_allocator>","<set>","<shared_mutex>","<sstream>","<stack>","<stdexcept>","<streambuf>","<stop_token>","<string>","<string_view>","<system_error>","<thread>","<tuple>","<type_traits>","<typeindex>","<typeinfo>","<unordered_map>","<unordered_set>","<utility>","<valarray>","<variant>","<vector>","<version>","<charconv>","<compare>","<cassert>","<cctype>","<cerrno>","<cfenv>","<cfloat>","<cinttypes>","<ciso646>","<climits>","<clocale>","<cmath>","<cstdbool>","<cstddef>","<cstdint>","<cstdio>","<cstdlib>","<cstring>","<ctgmath>","<cuchar>","<cwchar>","<cwctype>","<ccomplex>" };
     std::vector<int> selected_numbers_cycles;
     std::vector<Variable> variables_variable;
     
@@ -67,43 +88,7 @@ auto main() -> int {
             case 1: {//Creatig library
                 has_iostream = false;
                 has_string = false;
-                std::println("|===================== STANDARD TEMPLATE LIBRARY (STL) HEADERS ====================|");
-                std::println("|-------------------- Containers & Data Structures --------------------------------|");
-                std::println("|2. <array> |12. <deque> |15. <forward_list> |29. <list> |31. <map>                |");
-                std::println("|45. <set> |52. <string> |60. <unordered_map> |61. <unordered_set> |65. <vector>   |");
-                
-                std::println("|-------------------- Algorithms & Numerics ---------------------------------------|");
-                std::println("|1. <algorithm> |36. <numeric> |41. <ranges> |42. <ratio> |63. <valarray>          |");
-                
-                std::println("|-------------------- Utilities & Metaprogramming ---------------------------------|");
-                std::println("|5. <bitset> |6. <bit> |16. <format> |20. <initializer_list> |26. <iterator>       |");
-                std::println("|37. <optional> |53. <string_view> |56. <tuple> |57. <type_traits> |58. <typeindex>|");
-                std::println("|59. <typeinfo> |62. <utility> |64. <variant> |66. <version> |");
-                
-                std::println("|-------------------- Concurrency & Threading -------------------------------------|");
-                std::println("|3. <atomic> |4. <barrier> |11. <coroutine> |19. <future> |27. <latch>             |");
-                std::println("|34. <mutex> |46. <shared_mutex> |51. <stop_token> |55. <thread>                   |");
-                
-                std::println("|-------------------- Input/Output & Formatting -----------------------------------|");
-                std::println("|17. <fstream> |21. <iomanip> |22. <ios> |23. <iosfwd> |24. <iostream>             |");
-                std::println("|25. <istream> |38. <ostream> |47. <sstream> |50. <streambuf>                      |");
-                
-                std::println("|-------------------- Memory Management -------------------------------------------|");
-                std::println("|32. <memory> |33. <memory_resource> |35. <new> |44. <scoped_allocator>            |");
-                
-                std::println("|-------------------- Error Handling & Diagnostics --------------------------------|");
-                std::println("|13. <exception> |14. <execution> |18. <functional> |39. <queue>                   |");
-                std::println("|48. <stack> |49. <stdexcept> |54. <system_error> |68. <compare>                   |");
-                
-                std::println("|-------------------- C Standard Library Headers ----------------------------------|");
-                std::println("|69. <cassert> |70. <cctype> |71. <cerrno> |72. <cfenv> |73. <cfloat>              |");
-                std::println("|74. <cinttypes> |75. <ciso646> |76. <climits> |77. <clocale> |78. <cmath>         |");
-                std::println("|79. <cstdbool> |80. <cstddef> |81. <cstdint> |82. <cstdio> |83. <cstdlib>         |");
-                std::println("|84. <cstring> |85. <ctgmath> |86. <cuchar> |87. <cwchar> |88. <cwctype>           |");
-                std::println("|89. <ccomplex> |\n");
-                
-                std::println("|=========================== ADD LIBRARIES ========================================|");
-                std::println("Enter library numbers or name <name> (1-89):\n _>");
+                printMenu();
                 std::getline(std::cin, input);
     
                 if (!input.empty() and input[0] == '<') {
