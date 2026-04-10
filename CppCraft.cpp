@@ -7,10 +7,10 @@
 #include <sstream>
 #include <fstream>
 #ifdef __WiN32
-
+    system("cls");
 #endif
 #ifdef __linux
-
+    system("clear");
 #endif
 auto printMenu() -> void {
     std::println("|===================== STANDART LIBRARY C++26 =====================|");
