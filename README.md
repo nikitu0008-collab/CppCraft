@@ -3,7 +3,7 @@
   
 # ⚡ **Cpp Craft Code Generator** ⚡
 
-<img src="https://img.shields.io/badge/C%2B%2B-17-blue?style=for-the-badge&logo=c%2B%2B"/>
+<img src="https://img.shields.io/badge/C%2B%2B-23-blue?style=for-the-badge&logo=c%2B%2B"/>
 <img src="https://img.shields.io/badge/License-Proprietary-red?style=for-the-badge"/>
 <img src="https://img.shields.io/badge/Version-2.0-brightgreen?style=for-the-badge"/>
 
