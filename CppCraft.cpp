@@ -6,28 +6,29 @@
 #include <cstdio>
 #include <sstream>
 #include <fstream>
-#ifdef __WiN32
-    system("cls");
-#endif
-#ifdef __linux
-    system("clear");
-#endif
-auto printMenu() -> void {
-    std::println("|===================== STANDART LIBRARY C++26 =====================|");
-    std::println(" 1:<algorithm>   2:<array>       3:<atomic>       4:<barrier>      5:<bitset>       6:<bit>          7:<chrono>       8:<complex>");
-    std::println(" 9:<concepts>   10:<condition_variable> 11:<coroutine>   12:<deque>      13:<exception>   14:<execution>   15:<forward_list> 16:<format>");
-    std::println("17:<fstream>    18:<functional> 19:<future>      20:<initializer_list> 21:<iomanip>     22:<ios>         23:<iosfwd>      24:<iostream>");
-    std::println("25:<istream>    26:<iterator>   27:<latch>       28:<limits>      29:<list>        30:<locale>      31:<map>         32:<memory>");
-    std::println("33:<memory_resource> 34:<mutex>       35:<new>         36:<numeric>     37:<optional>    38:<ostream>     39:<queue>       40:<random>");
-    std::println("41:<ranges>     42:<ratio>      43:<regex>       44:<scoped_allocator> 45:<set>         46:<shared_mutex> 47:<sstream>     48:<stack>");
-    std::println("49:<stdexcept>  50:<streambuf>  51:<stop_token>  52:<string>      53:<string_view> 54:<system_error> 55:<thread>      56:<tuple>");
-    std::println("57:<type_traits> 58:<typeindex>  59:<typeinfo>    60:<unordered_map> 61:<unordered_set> 62:<utility>     63:<valarray>    64:<variant>");
-    std::println("65:<vector>     66:<version>    67:<charconv>    68:<compare>     69:<cassert>     70:<cctype>      71:<cerrno>      72:<cfenv>");
-    std::println("73:<cfloat>     74:<cinttypes>  75:<ciso646>     76:<climits>     77:<clocale>     78:<cmath>       79:<cstdbool>    80:<cstddef>");
-    std::println("81:<cstdint>    82:<cstdio>     83:<cstdlib>     84:<cstring>     85:<ctgmath>     86:<cuchar>      87:<cwchar>      88:<cwctype>");
-    std::println("89:<ccomplex>");
-    std::println("|=========================================================|\n");
-    std::println("Enter library numbers or name <name> (1-89):");
+static auto funcClear()->void{
+    #ifdef _WIN32
+        system("cls");
+    #elif defined(__linux__)
+        system("clear");
+    #endif
+}
+static auto printMenu() -> void {
+    std::print( "|===================== STANDART LIBRARY C++26 =====================|"
+                " 1:<algorithm>   2:<array>       3:<atomic>       4:<barrier>      5:<bitset>       6:<bit>          7:<chrono>       8:<complex>"
+                " 9:<concepts>   10:<condition_variable> 11:<coroutine>   12:<deque>      13:<exception>   14:<execution>   15:<forward_list> 16:<format>"
+                "17:<fstream>    18:<functional> 19:<future>      20:<initializer_list> 21:<iomanip>     22:<ios>         23:<iosfwd>      24:<iostream>"
+                "25:<istream>    26:<iterator>   27:<latch>       28:<limits>      29:<list>        30:<locale>      31:<map>         32:<memory>"
+                "33:<memory_resource> 34:<mutex>       35:<new>         36:<numeric>     37:<optional>    38:<ostream>     39:<queue>       40:<random>"
+                "41:<ranges>     42:<ratio>      43:<regex>       44:<scoped_allocator> 45:<set>         46:<shared_mutex> 47:<sstream>     48:<stack>"
+                "49:<stdexcept>  50:<streambuf>  51:<stop_token>  52:<string>      53:<string_view> 54:<system_error> 55:<thread>      56:<tuple>"
+                "57:<type_traits> 58:<typeindex>  59:<typeinfo>    60:<unordered_map> 61:<unordered_set> 62:<utility>     63:<valarray>    64:<variant>"
+                "65:<vector>     66:<version>    67:<charconv>    68:<compare>     69:<cassert>     70:<cctype>      71:<cerrno>      72:<cfenv>"
+                "73:<cfloat>     74:<cinttypes>  75:<ciso646>     76:<climits>     77:<clocale>     78:<cmath>       79:<cstdbool>    80:<cstddef>"
+                "81:<cstdint>    82:<cstdio>     83:<cstdlib>     84:<cstring>     85:<ctgmath>     86:<cuchar>      87:<cwchar>      88:<cwctype>"
+                "89:<ccomplex>"
+                "|=========================================================|"
+                "Enter library numbers or name <name> (1-89):");
 }
 struct Variable {
     std::string type; 
@@ -56,39 +57,39 @@ auto main() -> int {
     
     bool has_iostream = false, has_string = false;
     
-    std::println("name file(don't write .cpp)\n:_>");
+    std::print("name file(don't write .cpp)\n:_>");
     std::getline(std::cin, name_file);
-    std::ofstream out(name_file + ".cpp"); // creating and open file from writing. 
-    if (!out.is_open()) { // checking file opening or not.
+    std::ofstream out(name_file + ".cpp");
+    if (!out.is_open()) {
         std::cerr << "file not opening or creating" << std::endl;
         return EXIT_FAILURE;
     }
     while (answer_Cpp_Craft_Project != 0 and answer_Cpp_Craft_Project != -1) {
-        std::println("  >--------------------------------<  ");
-        std::println(">-----Cpp Craft Code By N.Y.RPO3-----<");
-        std::println("  >--------------------------------<  ");
-        std::println("____________________________________");
-        std::println("| [1]-libraries   [10]-function    |");
-        std::println("| [2]-variables   [11]-vector      |");
-        std::println("| [3]-cycles      [12]-fstream     |");
-        std::println("| [4]-switch_case [13]-OOP         |");
-        std::println("| [5]-if                           |");
-        std::println("| [6]-else if   [-3]-exit no create|");
-        std::println("| [7]-arr[]     [-2]-check result  ");
-        std::println("| [8]-arr[][]   [-1]-save and exit |");
-        std::println("| [9]-d_arr     [ 0]-save and start|");
-        std::println("|-----------------------------------|");
-        std::println("|");
-        std::println("L------------->answer: ");
+        std::println("  >--------------------------------<  "
+                     ">-----Cpp Craft Code By N.Y.RPO3-----<"
+                     "  >--------------------------------<  "
+                     "____________________________________"
+                     "| [1]-libraries   [10]-function    |"
+                     "| [2]-variables   [11]-vector      |"
+                     "| [3]-cycles      [12]-fstream     |"
+                     "| [4]-switch_case [13]-OOP         |"
+                     "| [5]-if                           |"
+                     "| [6]-else if   [-3]-exit no create|"
+                     "| [7]-arr[]     [-2]-check result  "
+                     "| [8]-arr[][]   [-1]-save and exit |"
+                     "| [9]-d_arr     [ 0]-save and start|"
+                     "|-----------------------------------|"
+                     "|"
+                     "L------------->answer: ");
 
         std::cin >> answer_Cpp_Craft_Project;
-        std::cin.ignore(1024, '\n');
-        system("clear");
+        funcClear();
         switch (answer_Cpp_Craft_Project) {
             case 1: {//Creatig library
                 has_iostream = false;
                 has_string = false;
                 printMenu();
+                std::cin.ignore(1024, '\n');
                 std::getline(std::cin, input);
     
                 if (!input.empty() and input[0] == '<') {
@@ -116,7 +117,7 @@ auto main() -> int {
                 if (!has_string) {
                     vector_library.emplace_back("#include <string>");
                 }
-                system("clear");
+                funcClear();
                 break;
             }
             case 2://Creating variables
@@ -135,7 +136,7 @@ auto main() -> int {
                     std::cin >> type_variable;
                         if (type_variable < 1 or type_variable > 6) {
                             std::println("type error's, return type");
-                            system("clear");
+                            funcClear();
                         }
                     }
                     std::print("[{}]-name\n:_> ", i+1);
@@ -199,7 +200,7 @@ auto main() -> int {
                         vector_variable.push_back("auto " + name_variable + " = " + variable_var + ";");
                     }
                 }
-                system("clear");
+                funcClear();
                 break;
             case 3://Creating cycles
                 answer_cycles = "";
@@ -231,7 +232,7 @@ auto main() -> int {
                         vector_cycles.push_back("} while(/*condition*/);");
                     }
                 }
-                system("clear");
+                funcClear();
                 break;
 
             case 4://Cases creating switch case
@@ -262,7 +263,7 @@ auto main() -> int {
                 vector_default.push_back("    break;");
                 vector_default.push_back("}");
 
-                system("clear");
+                funcClear();
                 break;
             case 5://Cases creating if()
                 col_if = -1;
@@ -278,7 +279,7 @@ auto main() -> int {
                     vector_if.push_back("    /*Condition*/");
                     vector_if.push_back("}");
                 }
-                system("clear");
+                funcClear();
                 break;
 
             case 6://Cases creating else if()
@@ -295,7 +296,7 @@ auto main() -> int {
                     vector_else_if.push_back("    /*Condition*/");
                     vector_else_if.push_back("}");
                 }
-                system("clear");
+                funcClear();
                 break;
             case 7://Cases creating arr
                 col_arr = -1;
@@ -317,7 +318,7 @@ auto main() -> int {
                     }
                     vector_arr.push_back("int arr" + std::to_string(i) + "[" + std::to_string(size_arr) + "];");
                 }
-                system("clear");
+                funcClear();
                 break;
             case 8://Cases creating dimensional arr
                 col_dimensional_arr = -1;
@@ -340,7 +341,7 @@ auto main() -> int {
                     }
                     vector_dimensional_arr.push_back("int arr_" + std::to_string(i) + "[" + std::to_string(size_arr_d_1) + "]" + "[" + std::to_string(size_arr_d_2) + "];");
                 }
-                system("clear");
+                funcClear();
                 break;
 
             case 9://cases creating dynamic arr
@@ -364,7 +365,7 @@ auto main() -> int {
                     vector_dynamic_arr.push_back("int* arr_d_" + std::to_string(i) + " = new int[" + std::to_string(size_dynamic_arr) + "];");
                     delete_dynamic_arr.push_back("delete[] arr_d_" + std::to_string(i) + ";");
                 }
-                system("clear");
+                funcClear();
                 break;
             case 10://Cases creaint function
                 std::print("return type (void, int, double, float, string, bool): ");
@@ -398,7 +399,7 @@ auto main() -> int {
                 func_code += "}\n";
 
                 vector_function.push_back(func_code);
-                system("clear");
+                funcClear();
                 break;
 
             case 11: //Cases creating vector
@@ -423,7 +424,7 @@ auto main() -> int {
                     }
                 }
                 vector_vectorov.push_back("std::vector<" + type_vector + "> " + name_vector + "(" + std::to_string(size_vector) + ");");
-                system("clear");
+                funcClear();
                 break;
             case 12:{
             for(size_t i = 0 ; i < vector_library.size() ; i++){
@@ -436,7 +437,7 @@ auto main() -> int {
                 std::cin >> answer_fstream;
                 if(answer_fstream < 1 or answer_fstream > 3){
                     std::cerr << "Enter Error" << std::endl;
-                    system("clear");
+                    funcClear();
                 }
             }
             if(answer_fstream == 1){
@@ -480,7 +481,7 @@ auto main() -> int {
             
             switch(answer_OOP){
                 case 1:
-                system("clear");
+                funcClear();
                 std::print("class name\n:_>");
                 std::cin >> name_class;
                 vector_class.push_back("class " + name_class + "{");
@@ -511,7 +512,7 @@ auto main() -> int {
                 vector_class.push_back("};");
                 break;
                 case 2:{
-                system("clear");
+                funcClear();
                 std::cout << "struct name\n:_> ";
                 std::getline(std::cin, name_struct);
                 vector_struct.push_back("struct " + name_struct + " {");
@@ -545,76 +546,76 @@ auto main() -> int {
                 break;
             }
             }
-            system("clear");
+            funcClear();
             break;
             }
             [[fallthrough]]; case 0: {//case creating cpp file and open this file
-                for (size_t i = 0; i < vector_library.size(); i++) {
-                    out << vector_library.at(i) << std::endl;
+                for (const auto & i : vector_library) {
+                    out << i << std::endl;
                 }
                 
-                for (size_t i = 0; i < vector_function.size(); i++) {
-                    out << vector_function.at(i) << std::endl;
+                for (const auto & i : vector_function) {
+                    out << i << std::endl;
                 }
 
-                for(size_t i = 0 ; i < vector_class.size() ; i++){
-                    out << vector_class.at(i) << std::endl;
+                for(const auto & vector_clas : vector_class){
+                    out << vector_clas << std::endl;
                 }
 
-                for(size_t i = 0 ; i < vector_struct.size() ; i++){
-                    out << vector_struct.at(i) << std::endl;
+                for(const auto & i : vector_struct){
+                    out << i << std::endl;
                 }
 
                 out << "int main() {" << std::endl;
 
-                for (size_t i = 0; i < vector_variable.size(); i++) {
-                    out << "    " << vector_variable.at(i) << std::endl;
+                for (const auto & i : vector_variable) {
+                    out << "    " << i << std::endl;
                 }
-                for (size_t i = 0; i < vector_cycles.size(); i++) {
-                    out << "    " << vector_cycles.at(i) << std::endl;
+                for (const auto & vector_cycle : vector_cycles) {
+                    out << "    " << vector_cycle << std::endl;
                 }
                 for (int sw = 0; sw < col_switch; sw++) {
                     if (sw < vector_switch.size()) {
                         out << "    " << vector_switch[sw] << std::endl;
                     }
 
-                    for (size_t i = 0; i < vector_case.size(); i++) {
-                        out << "        " << vector_case.at(i) << std::endl;
+                    for (const auto & i : vector_case) {
+                        out << "        " << i << std::endl;
                     }
 
-                    for (size_t i = 0; i < vector_default.size(); i++) {
-                        out << "        " << vector_default.at(i) << std::endl;
+                    for (const auto & i : vector_default) {
+                        out << "        " << i << std::endl;
                     }
                 }
-                for (size_t i = 0; i < vector_if.size(); i++) {
-                    out << "    " << vector_if.at(i) << std::endl;
+                for (const auto & i : vector_if) {
+                    out << "    " << i << std::endl;
                 }
-                for (size_t i = 0; i < vector_else_if.size(); i++) {
-                    out << "    " << vector_else_if.at(i) << std::endl;
+                for (const auto & i : vector_else_if) {
+                    out << "    " << i << std::endl;
                 }
-                for (size_t i = 0; i < vector_arr.size(); i++) {
-                    out << "    " << vector_arr.at(i) << std::endl;
+                for (const auto & i : vector_arr) {
+                    out << "    " << i << std::endl;
                 }
-                for (size_t i = 0; i < vector_dimensional_arr.size(); i++) {
-                    out << "    " << vector_dimensional_arr.at(i) << std::endl;
+                for (const auto & i : vector_dimensional_arr) {
+                    out << "    " << i << std::endl;
                 }
-                for (size_t i = 0; i < vector_dynamic_arr.size(); i++) {
-                    out << "    " << vector_dynamic_arr.at(i) << std::endl;
+                for (const auto & i : vector_dynamic_arr) {
+                    out << "    " << i << std::endl;
                 }
-                for (size_t i = 0; i < delete_dynamic_arr.size(); i++) {
-                    out << "    " << delete_dynamic_arr.at(i) << std::endl;
+                for (const auto & i : delete_dynamic_arr) {
+                    out << "    " << i << std::endl;
                 }
-                for (size_t i = 0; i < vector_vectorov.size(); i++) {
-                    out << "    " << vector_vectorov.at(i) << std::endl;
+                for (const auto & i : vector_vectorov) {
+                    out << "    " << i << std::endl;
                 }
-                for(size_t i = 0; i < vector_ifstream.size();i++){
-                    out << "    " << vector_ifstream.at(i) << std::endl;
+                for (const auto & i : vector_ifstream){
+                    out << "    " << i << std::endl;
                 }
-                for(size_t i = 0 ; i < vector_ofstream.size();i++){
-                    out << "    " << vector_ofstream.at(i) << std::endl;
+                for(const auto & i : vector_ofstream){
+                    out << "    " << i << std::endl;
                 }
-                for(size_t i = 0 ; i < vector_fstream.size();i++){
-                    out << "    " << vector_fstream.at(i) << std::endl;
+                for(const auto & i : vector_fstream){
+                    out << "    " << i << std::endl;
                 }
                 out << std::endl;
                 out << "    return 0;" << std::endl;
@@ -627,70 +628,70 @@ auto main() -> int {
                 break;
             }
             case -1:{//creating cpp file and not opening
-                for (size_t i = 0; i < vector_library.size(); i++) {
-                    out << vector_library.at(i) << std::endl;
+                for (const auto & i : vector_library) {
+                    out << i << std::endl;
                 }
-                for (size_t i = 0; i < vector_function.size(); i++) {
-                    out << vector_function.at(i) << std::endl;
+                for (const auto & i : vector_function) {
+                    out << i << std::endl;
                 }
-                for(size_t i = 0 ; i < vector_class.size() ; i++){
-                    out << vector_class.at(i) << std::endl;
+                for(const auto & vector_clas : vector_class){
+                    out << vector_clas << std::endl;
                 }
 
-                for(size_t i = 0 ; i < vector_struct.size() ; i++){
-                    out << vector_struct.at(i) << std::endl;
+                for(const auto & i : vector_struct){
+                    out << i << std::endl;
                 }
                 out << "int main() {" << std::endl;
-                for (size_t i = 0; i < vector_variable.size(); i++) {
-                    out << "    " << vector_variable.at(i) << std::endl;
+                for (const auto & i : vector_variable) {
+                    out << "    " << i << std::endl;
                 }
-                for (size_t i = 0; i < vector_cycles.size(); i++) {
-                    out << "    " << vector_cycles.at(i) << std::endl;
+                for (const auto & vector_cycle : vector_cycles) {
+                    out << "    " << vector_cycle << std::endl;
                 }
                 for (int sw = 0; sw < col_switch; sw++) {
                     if (sw < vector_switch.size()) {
                         out << "    " << vector_switch[sw] << std::endl;
                     }
 
-                    for (size_t i = 0; i < vector_case.size(); i++) {
-                        out << "        " << vector_case.at(i) << std::endl;
+                    for (const auto & i : vector_case) {
+                        out << "        " << i << std::endl;
                     }
 
-                    for (size_t i = 0; i < vector_default.size(); i++) {
-                        out << "        " << vector_default.at(i) << std::endl;
+                    for (const auto & i : vector_default) {
+                        out << "        " << i << std::endl;
                     }
                 }
 
-                for (size_t i = 0; i < vector_if.size(); i++) {
-                    out << "    " << vector_if.at(i) << std::endl;
+                for (const auto & i : vector_if) {
+                    out << "    " << i << std::endl;
                 }
-                for (size_t i = 0; i < vector_else_if.size(); i++) {
-                    out << "    " << vector_else_if.at(i) << std::endl;
+                for (const auto & i : vector_else_if) {
+                    out << "    " << i << std::endl;
                 }
-                for (size_t i = 0; i < vector_arr.size(); i++) {
-                    out << "    " << vector_arr.at(i) << std::endl;
+                for (const auto & i : vector_arr) {
+                    out << "    " << i << std::endl;
                 }
-                for (size_t i = 0; i < vector_dimensional_arr.size(); i++) {
-                    out << "    " << vector_dimensional_arr.at(i) << std::endl;
+                for (const auto & i : vector_dimensional_arr) {
+                    out << "    " << i << std::endl;
                 }
-                for (size_t i = 0; i < vector_dynamic_arr.size(); i++) {
-                    out << "    " << vector_dynamic_arr.at(i) << std::endl;
+                for (const auto & i : vector_dynamic_arr) {
+                    out << "    " << i << std::endl;
                 }
-                for (size_t i = 0; i < delete_dynamic_arr.size(); i++) {
-                    out << "    " << delete_dynamic_arr.at(i) << std::endl;
+                for (const auto & i : delete_dynamic_arr) {
+                    out << "    " << i << std::endl;
                 }
-                for (size_t i = 0; i < vector_vectorov.size(); i++) {
-                    out << "    " << vector_vectorov.at(i) << std::endl;
+                for (const auto & i : vector_vectorov) {
+                    out << "    " << i << std::endl;
                 }
 
-                for(size_t i = 0; i < vector_ifstream.size();i++){
-                    out << "    " << vector_ifstream.at(i) << std::endl;
+                for(const auto & i : vector_ifstream){
+                    out << "    " << i << std::endl;
                 }
-                for(size_t i = 0 ; i < vector_ofstream.size();i++){
-                    out << "    " << vector_ofstream.at(i) << std::endl;
+                for(const auto & i : vector_ofstream){
+                    out << "    " << i << std::endl;
                 }
-                for(size_t i = 0 ; i < vector_fstream.size();i++){
-                    out << "    " << vector_fstream.at(i) << std::endl;
+                for(const auto & i : vector_fstream){
+                    out << "    " << i << std::endl;
                 }
 
                 out << std::endl;
@@ -699,70 +700,70 @@ auto main() -> int {
                 break;
             }
             case -2:{//check result creating
-            for (size_t i = 0; i < vector_library.size(); i++) {
-                    std::cout << vector_library.at(i) << std::endl;
+            for (const auto & i : vector_library) {
+                    std::cout << i << std::endl;
                 }
-                for (size_t i = 0; i < vector_function.size(); i++) {
-                    std::cout << vector_function.at(i) << std::endl;
+                for (const auto & i : vector_function) {
+                    std::cout << i << std::endl;
                 }
-                for(size_t i = 0 ; i < vector_class.size() ; i++){
-                    std::cout << vector_class.at(i) << std::endl;
+                for(const auto & vector_clas : vector_class){
+                    std::cout << vector_clas << std::endl;
                 }
 
-                for(size_t i = 0 ; i < vector_struct.size() ; i++){
-                    std::cout << vector_struct.at(i) << std::endl;
+                for(const auto & i : vector_struct){
+                    std::cout << i << std::endl;
                 }
                 std::cout << "int main() {" << std::endl;
-                for (size_t i = 0; i < vector_variable.size(); i++) {
-                    std::cout << "    " << vector_variable.at(i) << std::endl;
+                for (const auto & i : vector_variable) {
+                    std::cout << "    " << i << std::endl;
                 }
-                for (size_t i = 0; i < vector_cycles.size(); i++) {
-                    std::cout << "    " << vector_cycles.at(i) << std::endl;
+                for (const auto & vector_cycle : vector_cycles) {
+                    std::cout << "    " << vector_cycle << std::endl;
                 }
                 for (int sw = 0; sw < col_switch; sw++) {
                     if (sw < vector_switch.size()) {
                         std::cout << "    " << vector_switch[sw] << std::endl;
                     }
 
-                    for (size_t i = 0; i < vector_case.size(); i++) {
-                        std::cout << "        " << vector_case.at(i) << std::endl;
+                    for (const auto & i : vector_case) {
+                        std::cout << "        " << i << std::endl;
                     }
 
-                    for (size_t i = 0; i < vector_default.size(); i++) {
-                        std::cout << "        " << vector_default.at(i) << std::endl;
+                    for (const auto & i : vector_default) {
+                        std::cout << "        " << i << std::endl;
                     }
                 }
 
-                for (size_t i = 0; i < vector_if.size(); i++) {
-                    std::cout << "    " << vector_if.at(i) << std::endl;
+                for (const auto & i : vector_if) {
+                    std::cout << "    " << i << std::endl;
                 }
-                for (size_t i = 0; i < vector_else_if.size(); i++) {
-                    std::cout << "    " << vector_else_if.at(i) << std::endl;
+                for (const auto & i : vector_else_if) {
+                    std::cout << "    " << i << std::endl;
                 }
-                for (size_t i = 0; i < vector_arr.size(); i++) {
-                    std::cout << "    " << vector_arr.at(i) << std::endl;
+                for (const auto & i : vector_arr) {
+                    std::cout << "    " << i << std::endl;
                 }
-                for (size_t i = 0; i < vector_dimensional_arr.size(); i++) {
-                    std::cout << "    " << vector_dimensional_arr.at(i) << std::endl;
+                for (const auto & i : vector_dimensional_arr) {
+                    std::cout << "    " << i << std::endl;
                 }
-                for (size_t i = 0; i < vector_dynamic_arr.size(); i++) {
-                    std::cout << "    " << vector_dynamic_arr.at(i) << std::endl;
+                for (const auto & i : vector_dynamic_arr) {
+                    std::cout << "    " << i << std::endl;
                 }
-                for (size_t i = 0; i < delete_dynamic_arr.size(); i++) {
-                    std::cout << "    " << delete_dynamic_arr.at(i) << std::endl;
+                for (const auto & i : delete_dynamic_arr) {
+                    std::cout << "    " << i << std::endl;
                 }
-                for (size_t i = 0; i < vector_vectorov.size(); i++) {
-                    std::cout << "    " << vector_vectorov.at(i) << std::endl;
+                for (const auto & i : vector_vectorov) {
+                    std::cout << "    " << i << std::endl;
                 }
 
-                for(size_t i = 0; i < vector_ifstream.size();i++){
-                    std::cout << "    " << vector_ifstream.at(i) << std::endl;
+                for(const auto & i : vector_ifstream){
+                    std::cout << "    " << i << std::endl;
                 }
-                for(size_t i = 0 ; i < vector_ofstream.size();i++){
-                    std::cout << "    " << vector_ofstream.at(i) << std::endl;
+                for(const auto & i : vector_ofstream){
+                    std::cout << "    " << i << std::endl;
                 }
-                for(size_t i = 0 ; i < vector_fstream.size();i++){
-                    std::cout << "    " << vector_fstream.at(i) << std::endl;
+                for(const auto & i : vector_fstream){
+                    std::cout << "    " << i << std::endl;
                 }
 
                 std::cout << std::endl;
@@ -784,7 +785,7 @@ auto main() -> int {
                 break;
             }
         }
-        system("clear"); 
+        funcClear();
         out.close();
         return EXIT_SUCCESS;
     }
