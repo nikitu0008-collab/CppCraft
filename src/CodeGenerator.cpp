@@ -1,5 +1,7 @@
 #include "../include/CodeGenerator.hpp"
 #include "../include/LibraryList.hpp"
+#include <math.h>
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -9,8 +11,8 @@
 #include <cstdlib>
 #include <algorithm>
 
-// Вспомогательная функция очистки экрана
-void CodeGenerator::funcClear() {
+// ===== Вспомогательная функция очистки экрана =====
+auto CodeGenerator::funcClear() -> void {
 #ifdef _WIN32
     system("cls");
 #elif defined(__linux__)
@@ -18,7 +20,7 @@ void CodeGenerator::funcClear() {
 #endif
 }
 
-void CodeGenerator::printMenu() {
+auto CodeGenerator::printMenu() -> void {
     std::print( "|===================== STANDART LIBRARY C++26 =====================|"
                 " 1:<algorithm>   2:<array>       3:<atomic>       4:<barrier>      5:<bitset>       6:<bit>          7:<chrono>       8:<complex>"
                 " 9:<concepts>   10:<condition_variable> 11:<coroutine>   12:<deque>      13:<exception>   14:<execution>   15:<forward_list> 16:<format>"
@@ -36,9 +38,11 @@ void CodeGenerator::printMenu() {
                 "Enter library numbers or name <name> (1-89):");
 }
 
+// ===== Конструктор =====
 CodeGenerator::CodeGenerator()
     : has_iostream(false), has_string(false), col_switch(-1), col_case(-1), col_if(-1), col_else_if(-1) {}
 
+// ===== Старые методы (консольные) =====
 void CodeGenerator::processLibraryInput() {
     has_iostream = false;
     has_string = false;
@@ -66,13 +70,13 @@ void CodeGenerator::processLibraryInput() {
         if (inc == "#include <string>")   has_string = true;
     }
 
-    if (!has_iostream) vector_library.emplace_back("#include <iostream>");
-    if (!has_string)   vector_library.emplace_back("#include <string>");
+    if (!has_iostream) { vector_library.emplace_back("#include <iostream>"); }
+    if (!has_string) { vector_library.emplace_back("#include <string>"); }
 
     funcClear();
 }
 
-void CodeGenerator::processVariables() {
+auto CodeGenerator::processVariables() -> void {
     int col_variable = 0;
     while (col_variable <= 0) {
         std::println("col variable: ");
@@ -97,7 +101,7 @@ void CodeGenerator::processVariables() {
         var.name = name_variable;
 
         if (type_variable == 1) {
-            int val;
+            int val = 0;
             std::print("variable[{}]- {} = meaning[int]? \n :_>", i+1, name_variable);
             std::cin >> val;
             var.type = "int";
@@ -105,7 +109,7 @@ void CodeGenerator::processVariables() {
             variables_variable.push_back(var);
             vector_variable.push_back("int " + name_variable + " = " + std::to_string(val) + ";");
         } else if (type_variable == 2) {
-            double val;
+            double val = NAN;
             std::print("variable[{}]- {} = meaning[double]? \n :_>", i+1, name_variable);
             std::cin >> val;
             var.type = "double";
@@ -113,7 +117,7 @@ void CodeGenerator::processVariables() {
             variables_variable.push_back(var);
             vector_variable.push_back("double " + name_variable + " = " + std::to_string(val) + ";");
         } else if (type_variable == 3) {
-            float val;
+            float val = NAN;
             std::print("variable[{}]- {} = meaning[float]? \n :_>", i+1, name_variable);
             std::cin >> val;
             var.type = "float";
@@ -129,7 +133,7 @@ void CodeGenerator::processVariables() {
             variables_variable.push_back(var);
             vector_variable.push_back("std::string " + name_variable + " = \"" + val + "\";");
         } else if (type_variable == 5) {
-            int ans;
+            int ans = 0;
             std::print("variable[{}]- {} = meaning[bool]? \n :_>", i+1, name_variable);
             std::cin >> ans;
             var.type = "bool";
@@ -154,7 +158,7 @@ void CodeGenerator::processVariables() {
     funcClear();
 }
 
-void CodeGenerator::processCycles() {
+auto CodeGenerator::processCycles() -> void {
     std::string answer_cycles;
     std::print("cycles: [1]for [2]while [3]do-while\n:_>");
     std::cin.ignore(1024, '\n');
@@ -162,13 +166,14 @@ void CodeGenerator::processCycles() {
 
     std::vector<int> selected_numbers_cycles;
     std::stringstream ss_cycles(answer_cycles);
-    int num;
+    int num = 0;
     while (ss_cycles >> num) {
-        if (num > 0 && num <= 3)
+        if (num > 0 && num <= 3) {
             selected_numbers_cycles.push_back(num);
+        }
     }
 
-    for (int sel : selected_numbers_cycles) {
+    for (const size_t sel : selected_numbers_cycles) {
         if (sel == 1) {
             vector_cycles.push_back("for(size_t i = 0; i < ...; i++) {");
             vector_cycles.push_back("    //code_cycles");
@@ -186,14 +191,14 @@ void CodeGenerator::processCycles() {
     funcClear();
 }
 
-void CodeGenerator::processSwitchCase() {
+auto CodeGenerator::processSwitchCase() -> void {
     while (col_switch <= 0 || col_case <= 0) {
         std::print("col switch case:\n:_>");
         std::cin >> col_switch;
-        if (col_switch < 0) std::println("col_switch error's");
+        if (col_switch < 0) { std::println("col_switch error's"); }
         std::print("col cases?\n:_>");
         std::cin >> col_case;
-        if (col_case < 0) std::println("col_case error's");
+        if (col_case < 0) { std::println("col_case error's"); }
     }
 
     for (int i = 0; i < col_switch; ++i)
@@ -210,13 +215,13 @@ void CodeGenerator::processSwitchCase() {
     funcClear();
 }
 
-void CodeGenerator::processIf() {
+auto CodeGenerator::processIf() -> void {
     while (col_if <= 0) {
         std::print("col-if() \n _>");
         std::cin >> col_if;
         if (col_if < 0) std::println("col-if error's");
     }
-    for (int i = 0; i < col_if; ++i) {
+    for (size_t i = 0; i < col_if; i++) {
         vector_if.push_back("if() {");
         vector_if.push_back("    /*Condition*/");
         vector_if.push_back("}");
@@ -224,11 +229,14 @@ void CodeGenerator::processIf() {
     funcClear();
 }
 
-void CodeGenerator::processElseIf() {
+auto CodeGenerator::processElseIf() -> void {
     while (col_else_if <= 0) {
         std::print("col else-if()\n:_>");
         std::cin >> col_else_if;
-        if (col_else_if < 0) std::println("col-else if error's");
+        if (col_else_if < 0) {
+            std::println("col-else if error's");
+            continue;
+        }
     }
     for (int i = 0; i < col_else_if; ++i) {
         vector_else_if.push_back("else if() {");
@@ -250,27 +258,35 @@ void CodeGenerator::processArray1D() {
         while (size_arr <= 0) {
             std::print("size_arr[{}]\n:_>", i);
             std::cin >> size_arr;
-            if (size_arr < 0) std::println("size_arr error's");
+            if (size_arr < 0) {
+                std::println("size_arr error's");
+                continue;
+            }
         }
         vector_arr.push_back("int arr" + std::to_string(i) + "[" + std::to_string(size_arr) + "];");
     }
     funcClear();
 }
 
-void CodeGenerator::processArray2D() {
+auto CodeGenerator::processArray2D() -> void {
     int col_dimensional_arr = 0;
     while (col_dimensional_arr <= 0) {
         std::print("col arr[][]\n:_>");
         std::cin >> col_dimensional_arr;
-        if (col_dimensional_arr <= 0) std::print("arr[][] incorected");
+        if (col_dimensional_arr <= 0) { 
+            std::print("arr[][] incorected");
+            continue;
+        }
     }
-    for (int i = 0; i < col_dimensional_arr; ++i) {
+    for (size_t i = 0; i < col_dimensional_arr; ++i) {
         int size_arr_d_1 = 0, size_arr_d_2 = 0;
         while (size_arr_d_1 <= 0 || size_arr_d_2 <= 0) {
             std::print("size[?][?] = ");
             std::cin >> size_arr_d_1 >> size_arr_d_2;
-            if (size_arr_d_1 < 0 || size_arr_d_2 < 0)
+            if (size_arr_d_1 < 0 || size_arr_d_2 < 0) {
                 std::println("size_arr[][] incorrected size[?][?]");
+                continue;
+            }
         }
         vector_dimensional_arr.push_back("int arr_" + std::to_string(i) + "[" + std::to_string(size_arr_d_1) + "][" + std::to_string(size_arr_d_2) + "];");
     }
@@ -282,9 +298,12 @@ void CodeGenerator::processDynamicArray() {
     while (col_dynamic_arr <= 0) {
         std::print("col d_arr :_>");
         std::cin >> col_dynamic_arr;
-        if (col_dynamic_arr < 0) std::println("error's col <= 0");
+        if (col_dynamic_arr < 0) { 
+            std::println("error's col <= 0");
+            continue;
+        }
     }
-    for (int i = 0; i < col_dynamic_arr; ++i) {
+    for (size_t i = 0; i < col_dynamic_arr; ++i) {
         int size_dynamic_arr = 0;
         while (size_dynamic_arr <= 0) {
             std::print("size {} arr = _", i+1);
@@ -297,7 +316,7 @@ void CodeGenerator::processDynamicArray() {
     funcClear();
 }
 
-void CodeGenerator::processFunction() {
+auto CodeGenerator::processFunction() -> void {
     std::string ret_type, name, params;
     std::print("return type (void, int, double, float, string, bool): ");
     std::cin.ignore(1024, '\n');
@@ -324,32 +343,37 @@ void CodeGenerator::processFunction() {
     funcClear();
 }
 
-void CodeGenerator::processVector() {
+auto CodeGenerator::processVector() -> void {
     std::string name_vector, type_vector;
     std::print("name vector :_>");
     std::cin >> name_vector;
     while (type_vector != "int" && type_vector != "float" && type_vector != "double" && type_vector != "string") {
         std::print("type vector = (int, float, double, string)\n:_>");
         std::cin >> type_vector;
-        if (type_vector != "int" && type_vector != "float" && type_vector != "double" && type_vector != "string")
+        if (type_vector != "int" && type_vector != "float" && type_vector != "double" && type_vector != "string") {
             std::println("writing type error's");
+            continue;
+        }
     }
     int size_vector = 0;
     while (size_vector <= 0) {
         std::print("size vector:\n:_>");
         std::cin >> size_vector;
-        if (size_vector < 0) std::println("size vector incorrected! \n size vector < 0");
+        if (size_vector < 0) { 
+            std::println("size vector incorrected! \n size vector < 0");
+            continue;
+        }
     }
     vector_vectorov.push_back("std::vector<" + type_vector + "> " + name_vector + "(" + std::to_string(size_vector) + ");");
     funcClear();
 }
 
-void CodeGenerator::processFstream() {
-    // Добавляем #include <fstream> если его нет
+auto CodeGenerator::processFstream() -> void {
     bool has_fstream = false;
-    for (const auto& inc : vector_library)
+    for (const auto& inc : vector_library) {
         if (inc == "#include <fstream>") { has_fstream = true; break; }
-    if (!has_fstream) vector_library.push_back("#include <fstream>");
+    }
+    if (!has_fstream) { vector_library.push_back("#include <fstream>"); }
 
     int answer_fstream = 0;
     while (answer_fstream < 1 || answer_fstream > 3) {
@@ -385,7 +409,7 @@ void CodeGenerator::processFstream() {
     funcClear();
 }
 
-void CodeGenerator::processOOP() {
+auto CodeGenerator::processOOP() -> void {
     int answer_OOP = -1;
     while (answer_OOP != 0) {
         std::println("|=======================|#|");
@@ -411,15 +435,15 @@ void CodeGenerator::processOOP() {
                     std::cin.clear();
                 }
             }
-            if (public_or_private == 1) vector_class.push_back("public:");
-            else vector_class.push_back("private:");
+            if (public_or_private == 1) { vector_class.push_back("public:"); }
+            else { vector_class.push_back("private:"); }
 
             std::cout << "if stop, Enter [STOP]\n";
             std::string anything_class;
             while (true) {
                 std::getline(std::cin, anything_class);
-                if (anything_class == "STOP") break;
-                if (!anything_class.empty()) vector_class.push_back(anything_class);
+                if (anything_class == "STOP") { break; }
+                if (!anything_class.empty()) { vector_class.push_back(anything_class); }
             }
             vector_class.push_back("};");
         } else if (answer_OOP == 2) {
@@ -439,15 +463,16 @@ void CodeGenerator::processOOP() {
                 }
             }
             std::cin.ignore(1024, '\n');
-            if (public_or_private == 1) vector_struct.push_back("public:");
-            else vector_struct.push_back("private:");
-
+            if (public_or_private == 1) { vector_struct.push_back("public:"); }
+            else { 
+                vector_struct.push_back("private:");
+            }
             std::cout << "if stop, Enter [STOP]\n";
             std::string anything_struct;
             while (true) {
                 std::getline(std::cin, anything_struct);
-                if (anything_struct == "STOP") break;
-                if (!anything_struct.empty()) vector_struct.push_back(anything_struct);
+                if (anything_struct == "STOP"){ break; }
+                if (!anything_struct.empty()) { vector_struct.push_back(anything_struct); }
             }
             vector_struct.push_back("};");
         }
@@ -455,7 +480,7 @@ void CodeGenerator::processOOP() {
     }
 }
 
-void CodeGenerator::writeToFile(bool openAfterWrite) {
+auto CodeGenerator::writeToFile(bool openAfterWrite) -> void {
     std::ofstream out(name_file + ".cpp");
     if (!out.is_open()) {
         std::cerr << "file not opening or creating" << std::endl;
@@ -482,7 +507,6 @@ void CodeGenerator::writeToFile(bool openAfterWrite) {
     for (const auto& line : vector_ofstream)       out << "    " << line << std::endl;
     for (const auto& line : vector_fstream)        out << "    " << line << std::endl;
 
-    // switch-case блок (как в исходном коде)
     for (int sw = 0; sw < col_switch; ++sw) {
         if (sw < static_cast<int>(vector_switch.size()))
             out << "    " << vector_switch[sw] << std::endl;
@@ -592,4 +616,182 @@ void CodeGenerator::run() {
         }
         funcClear();
     }
+}
+
+// ===== НОВЫЕ МЕТОДЫ ДЛЯ GUI =====
+
+void CodeGenerator::addLibrary(const std::string& includeLine) {
+    vector_library.push_back(includeLine);
+    if (includeLine == "#include <iostream>") has_iostream = true;
+    if (includeLine == "#include <string>")   has_string = true;
+}
+
+void CodeGenerator::addVariable(const std::string& type, const std::string& name, const std::string& value) {
+    Variable var{type, name, value};
+    variables_variable.push_back(var);
+    vector_variable.push_back(type + " " + name + " = " + value + ";");
+}
+
+void CodeGenerator::addCycle(int type) {
+    if (type == 1) {
+        vector_cycles.push_back("for(size_t i = 0; i < ...; i++) {");
+        vector_cycles.push_back("    //code_cycles");
+        vector_cycles.push_back("}");
+    } else if (type == 2) {
+        vector_cycles.push_back("while(/*condition*/) {");
+        vector_cycles.push_back("    //what will happen");
+        vector_cycles.push_back("}");
+    } else if (type == 3) {
+        vector_cycles.push_back("do {");
+        vector_cycles.push_back("    //what will happen");
+        vector_cycles.push_back("} while(/*condition*/);");
+    }
+}
+
+void CodeGenerator::addSwitchCase(int switchCount, int caseCount) {
+    col_switch = switchCount;
+    col_case   = caseCount;
+    vector_switch.clear();
+    vector_case.clear();
+    vector_default.clear();
+    for (int i = 0; i < switchCount; ++i)
+        vector_switch.push_back("switch() {");
+    for (int j = 0; j < caseCount; ++j) {
+        vector_case.push_back("case " + std::to_string(j+1) + ":");
+        vector_case.push_back("    break;");
+    }
+    vector_default.push_back("default:");
+    vector_default.push_back("    break;");
+    vector_default.push_back("}");
+}
+
+void CodeGenerator::addIf(int count) {
+    col_if = count;
+    vector_if.clear();
+    for (int i = 0; i < count; ++i) {
+        vector_if.push_back("if() {");
+        vector_if.push_back("    /*Condition*/");
+        vector_if.push_back("}");
+    }
+}
+
+void CodeGenerator::addElseIf(int count) {
+    col_else_if = count;
+    vector_else_if.clear();
+    for (int i = 0; i < count; ++i) {
+        vector_else_if.push_back("else if() {");
+        vector_else_if.push_back("    /*Condition*/");
+        vector_else_if.push_back("}");
+    }
+}
+
+void CodeGenerator::addArray1D(int count, int size) {
+    for (int i = 0; i < count; ++i)
+        vector_arr.push_back("int arr" + std::to_string(i) + "[" + std::to_string(size) + "];");
+}
+
+void CodeGenerator::addArray2D(int count, int rows, int cols) {
+    for (int i = 0; i < count; ++i)
+        vector_dimensional_arr.push_back("int arr_" + std::to_string(i) + "[" + std::to_string(rows) + "][" + std::to_string(cols) + "];");
+}
+
+void CodeGenerator::addDynamicArray(int count, int size) {
+    for (int i = 0; i < count; ++i) {
+        vector_dynamic_arr.push_back("int* arr_d_" + std::to_string(i) + " = new int[" + std::to_string(size) + "];");
+        delete_dynamic_arr.push_back("delete[] arr_d_" + std::to_string(i) + ";");
+    }
+}
+
+void CodeGenerator::addFunction(const std::string& retType, const std::string& name, const std::string& params) {
+    std::string func = "\n" + retType + " " + name + "(" + params + ") {\n";
+    func += "    // Function implementation\n";
+    if (retType != "void") {
+        func += "    return ";
+        if (retType == "int") func += "0";
+        else if (retType == "double" || retType == "float") func += "0.0";
+        else if (retType == "bool") func += "false";
+        else if (retType == "std::string") func += "\"\"";
+        else func += "{}";
+        func += ";\n";
+    }
+    func += "}\n";
+    vector_function.push_back(func);
+}
+
+void CodeGenerator::addVector(const std::string& name, const std::string& type, int size) {
+    vector_vectorov.push_back("std::vector<" + type + "> " + name + "(" + std::to_string(size) + ");");
+}
+
+void CodeGenerator::addFstream(int type, const std::string& objName, const std::string& fileName) {
+    bool has_fstream = false;
+    for (const auto& inc : vector_library) {
+        if (inc == "#include <fstream>") { has_fstream = true; break; }
+    }
+    if (!has_fstream) vector_library.push_back("#include <fstream>");
+
+    if (type == 1) {
+        vector_fstream.push_back("fstream " + objName + "(" + fileName + ");");
+    } else if (type == 2) {
+        vector_ofstream.push_back("ofstream " + objName + "(" + fileName + ");");
+    } else if (type == 3) {
+        vector_ifstream.push_back("ifstream " + objName + "(" + fileName + ");");
+    }
+}
+
+void CodeGenerator::addClass(const std::string& className, bool isPublic, const std::vector<std::string>& members) {
+    vector_class.push_back("class " + className + " {");
+    vector_class.push_back(isPublic ? "public:" : "private:");
+    for (const auto& m : members)
+        vector_class.push_back("    " + m);
+    vector_class.push_back("};");
+}
+
+void CodeGenerator::addStruct(const std::string& structName, bool isPublic, const std::vector<std::string>& members) {
+    vector_struct.push_back("struct " + structName + " {");
+    if (!isPublic) vector_struct.push_back("private:");
+    for (const auto& m : members)
+        vector_struct.push_back("    " + m);
+    vector_struct.push_back("};");
+}
+
+std::string CodeGenerator::getCodePreview() const {
+    std::ostringstream out;
+    for (const auto& line : vector_library) out << line << "\n";
+    for (const auto& line : vector_function) out << line << "\n";
+    for (const auto& line : vector_class)    out << line << "\n";
+    for (const auto& line : vector_struct)   out << line << "\n";
+
+    out << "int main() {\n";
+    for (const auto& line : vector_variable)       out << "    " << line << "\n";
+    for (const auto& line : vector_cycles)         out << "    " << line << "\n";
+    for (const auto& line : vector_if)             out << "    " << line << "\n";
+    for (const auto& line : vector_else_if)        out << "    " << line << "\n";
+    for (const auto& line : vector_arr)            out << "    " << line << "\n";
+    for (const auto& line : vector_dimensional_arr)out << "    " << line << "\n";
+    for (const auto& line : vector_dynamic_arr)    out << "    " << line << "\n";
+    for (const auto& line : delete_dynamic_arr)    out << "    " << line << "\n";
+    for (const auto& line : vector_vectorov)       out << "    " << line << "\n";
+    for (const auto& line : vector_ifstream)       out << "    " << line << "\n";
+    for (const auto& line : vector_ofstream)       out << "    " << line << "\n";
+    for (const auto& line : vector_fstream)        out << "    " << line << "\n";
+
+    for (int sw = 0; sw < col_switch; ++sw) {
+        if (sw < static_cast<int>(vector_switch.size()))
+            out << "    " << vector_switch[sw] << "\n";
+        for (const auto& line : vector_case)    out << "        " << line << "\n";
+        for (const auto& line : vector_default) out << "        " << line << "\n";
+    }
+    out << "\n    return 0;\n}\n";
+    return out.str();
+}
+
+void CodeGenerator::writeToFile(const std::string& fileName) {
+    std::ofstream out(fileName + ".cpp");
+    if (!out.is_open()) {
+        std::cerr << "Cannot create file " << fileName << ".cpp\n";
+        return;
+    }
+    out << getCodePreview();
+    out.close();
+    std::cout << "File " << fileName << ".cpp saved.\n";
 }

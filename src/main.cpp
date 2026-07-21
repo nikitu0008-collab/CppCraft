@@ -1,7 +1,9 @@
-#include "../include/CodeGenerator.hpp"
+#include "../include/GuiGenerator.hpp"
 
-int main() {
-    CodeGenerator generator;
-    generator.run();
-    return 0;
+#include <cstdlib>
+
+auto main() -> int {
+    GuiGenerator gui;
+    gui.run();
+    return EXIT_SUCCESS;
 }

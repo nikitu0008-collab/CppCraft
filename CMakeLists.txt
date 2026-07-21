@@ -9,4 +9,5 @@ include_directories(include)
 add_executable(cpp_craft
     src/main.cpp
     src/CodeGenerator.cpp
+    src/GuiGenerator.cpp
 )
