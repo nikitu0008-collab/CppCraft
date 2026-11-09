@@ -6,6 +6,7 @@
 <img src="https://img.shields.io/badge/FLTK-1.4-purple?style=for-the-badge"/>
 <img src="https://img.shields.io/badge/GUI-Desktop-green?style=for-the-badge"/>
 <img src="https://img.shields.io/badge/Version-4.0-brightgreen?style=for-the-badge"/>
+<img src="https://img.shields.io/github/actions/workflow/status/nikitu0008-collab/CppCraft/ci.yml?branch=main&label=CI&style=for-the-badge"/>
 
 ### 🖥️ *Визуальный конструктор кода на C++ с графическим интерфейсом* 🖥️
 
